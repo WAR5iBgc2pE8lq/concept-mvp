@@ -8,19 +8,20 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
-    /* ===== Light theme — calm, consistent, uncluttered ===== */
+    /* ===== Light, airy, harmonious ===== */
     :root{
-      --bg:#f7f8fb;            /* page background */
+      --bg:#ffffff;            /* page background (true white) */
       --surface:#ffffff;       /* cards */
       --ink:#0f172a;           /* main text */
       --muted:#64748b;         /* secondary text */
-      --line:#e6e9f0;          /* borders/dividers */
+      --line:#e7eaf1;          /* borders */
       --a1:#3b82f6;            /* blue */
       --a2:#10b981;            /* teal */
       --ring:rgba(59,130,246,.18);
-      --shadow:0 10px 30px rgba(15,23,42,.06);
-      --radius:18px; --rsm:12px;
-      --lift: 6px;
+      --shadow:0 12px 36px rgba(15,23,42,.06);
+      --radius:18px;
+      --lift:6px;
+      --gap:22px;              /* global spacing rhythm */
     }
 
     *{box-sizing:border-box}
@@ -29,51 +30,51 @@
       margin:0; font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--ink);
       background:
-        radial-gradient(1200px 800px at 10% 0%, rgba(59,130,246,.08), transparent 55%),
-        radial-gradient(1200px 900px at 90% 10%, rgba(16,185,129,.08), transparent 55%),
+        radial-gradient(1200px 800px at 10% 0%, rgba(59,130,246,.06), transparent 55%),
+        radial-gradient(1100px 700px at 90% 10%, rgba(16,185,129,.06), transparent 55%),
         var(--bg);
       -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
       overflow-x:hidden;
     }
     a{color:inherit; text-decoration:none}
-    .wrap{max-width:1100px; margin:0 auto; padding:28px 18px}
+    .wrap{max-width:1100px; margin:0 auto; padding:32px 20px}
 
     /* Header */
     header{position:sticky; top:0; z-index:10; backdrop-filter:saturate(140%) blur(8px);
-      background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.7)); border-bottom:1px solid var(--line)}
+      background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.75)); border-bottom:1px solid var(--line)}
     .nav{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:12px 0}
     .brand{display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:-.02em}
-    .mark{width:28px; height:28px; border-radius:10px; background:linear-gradient(135deg, var(--a1), var(--a2)); box-shadow:0 6px 16px rgba(16,185,129,.25)}
+    .mark{width:28px; height:28px; border-radius:10px; background:linear-gradient(135deg, var(--a1), var(--a2)); box-shadow:0 6px 16px rgba(16,185,129,.22)}
     .links{display:flex; gap:10px; flex-wrap:wrap}
-    .pill{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; border:1px solid var(--line); background:#fff; color:var(--ink)}
-    .btn{display:inline-flex; align-items:center; gap:10px; padding:11px 16px; border-radius:12px; font-weight:800; border:0; cursor:pointer; color:#fff;
+    .pill{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; border:1px solid var(--line); background:#fff; color:var(--ink)}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:12px; font-weight:800; border:0; cursor:pointer; color:#fff;
       background:linear-gradient(90deg, var(--a1), var(--a2)); box-shadow:var(--shadow)}
 
     /* Sections */
-    .card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow)}
-    .title{font-size:clamp(34px,5.6vw,56px); font-weight:900; letter-spacing:-.03em; margin:0}
+    .section{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:26px; box-shadow:var(--shadow); margin-bottom:var(--gap)}
+    .title{font-size:clamp(34px,5.2vw,54px); font-weight:900; letter-spacing:-.03em; margin:0}
     .section-title{font-size:22px; font-weight:900; letter-spacing:-.01em; margin:0 0 10px;
       background:linear-gradient(90deg, var(--a1), var(--a2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent}
     .muted{color:var(--muted)}
     .sp{height:1px; background:linear-gradient(90deg, transparent, rgba(2,6,23,.08), transparent); margin:24px 0}
 
     /* Layout grids */
-    .cols{display:grid; grid-template-columns:1.1fr .9fr; gap:18px; align-items:center}
+    .cols{display:grid; grid-template-columns:1.05fr .95fr; gap:var(--gap); align-items:center}
     @media (max-width: 960px){ .cols{grid-template-columns:1fr} }
-    .three{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .three{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap)}
     @media (max-width: 1040px){ .three{grid-template-columns:repeat(2,1fr)} }
     @media (max-width: 680px){ .three{grid-template-columns:1fr} }
 
     /* Project cards */
-    .proj{border:1px solid var(--line); border-radius:16px; background:#fff; overflow:hidden}
-    .thumb{aspect-ratio:16/10; display:grid; place-items:center; background:linear-gradient(135deg, rgba(59,130,246,.12), rgba(16,185,129,.12))}
-    .thumb svg{width:42%; opacity:.85}
+    .proj{border:1px solid var(--line); border-radius:16px; background:#fff; overflow:hidden; display:flex; flex-direction:column}
+    .thumb{aspect-ratio:16/10; width:100%; overflow:hidden; background:#f3f5f9}
+    .thumb img{width:100%; height:100%; object-fit:cover; display:block; transform:scale(1.02)}
     .p-body{padding:14px}
     .p-title{font-weight:800}
 
     /* Process steps */
     .steps{counter-reset:s}
-    .step{position:relative; padding-left:44px; margin:10px 0}
+    .step{position:relative; padding-left:44px; margin:12px 0}
     .step::before{counter-increment:s; content:counter(s); position:absolute; left:0; top:0; width:32px; height:32px; border-radius:9px; display:grid; place-items:center;
       background:linear-gradient(135deg, var(--a1), var(--a2)); color:#fff; font-weight:800}
 
@@ -84,7 +85,7 @@
     input:focus,textarea:focus{border-color:#cfe1ff; box-shadow:0 0 0 4px var(--ring)}
     footer{color:var(--muted); font-size:12px; padding:20px 0; text-align:center}
 
-    /* Motion (subtle) */
+    /* Motion (subtle + responsive) */
     html{scroll-behavior:smooth}
     @media (prefers-reduced-motion:no-preference){
       .reveal{opacity:0; transform:translateY(8px); transition:opacity .6s ease, transform .6s ease}
@@ -109,27 +110,27 @@
     </div>
   </header>
 
-  <main class="wrap">
+  <main class="wrap" style="margin-top:var(--gap)">
     <!-- Hero -->
-    <section class="card reveal float">
+    <section class="section reveal float">
       <div class="cols">
         <div>
           <h1 class="title">I build clean, fast web apps</h1>
           <p class="muted">Full-stack developer focused on elegant UI, performance, and business results. Available for selected projects.</p>
-          <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap">
+          <div style="display:flex; gap:12px; margin-top:14px; flex-wrap:wrap">
             <a href="#contact" class="btn lift">Start a project</a>
             <a href="#services" class="pill lift">What I offer</a>
           </div>
-          <div style="display:flex; gap:8px; margin-top:12px; flex-wrap:wrap">
+          <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap">
             <span class="pill">JavaScript • TypeScript</span>
             <span class="pill">React • Node</span>
             <span class="pill">APIs • Integrations</span>
             <span class="pill">AI features</span>
           </div>
         </div>
-        <div class="card" style="background:#fff">
+        <div class="section" style="background:#fff; margin:0">
           <div class="section-title">Why clients choose me</div>
-          <ul class="muted" style="margin:8px 0 0 18px">
+          <ul class="muted" style="margin:10px 0 0 18px">
             <li>Interfaces that feel effortless and fast</li>
             <li>Clear communication and dependable delivery</li>
             <li>Pragmatic engineering — ship value first</li>
@@ -139,21 +140,21 @@
     </section>
 
     <!-- Services -->
-    <section id="services" class="card reveal float">
+    <section id="services" class="section reveal float">
       <div class="section-title">Services that move the needle</div>
       <p class="muted">I build reliable software that looks great and grows your business.</p>
-      <div class="three" style="margin-top:12px">
-        <div class="card float">
+      <div class="three" style="margin-top:14px">
+        <div class="section float" style="margin:0">
           <div style="font-weight:900; margin-bottom:6px">MVP in Days</div>
           <div class="muted">From idea to live product: landing page, backend API, and data.</div>
           <ul class="muted" style="margin:10px 0 0 18px"><li>Clean UI</li><li>Auth & forms</li><li>Deploy included</li></ul>
         </div>
-        <div class="card float">
+        <div class="section float" style="margin:0">
           <div style="font-weight:900; margin-bottom:6px">Web App Upgrades</div>
           <div class="muted">Speed, UX, and reliability improvements that convert.</div>
           <ul class="muted" style="margin:10px 0 0 18px"><li>Performance tuning</li><li>UI/UX polish</li><li>Bug fixing</li></ul>
         </div>
-        <div class="card float">
+        <div class="section float" style="margin:0">
           <div style="font-weight:900; margin-bottom:6px">Integrations & Automation</div>
           <div class="muted">Connect tools and remove manual work with APIs and lightweight AI.</div>
           <ul class="muted" style="margin:10px 0 0 18px"><li>Payments & email</li><li>CRM / DB sync</li><li>AI chat & summaries</li></ul>
@@ -161,49 +162,51 @@
       </div>
     </section>
 
-    <!-- Selected Work -->
-    <section id="work" class="card reveal float">
+    <!-- Selected Work (now with real images) -->
+    <section id="work" class="section reveal float">
       <div class="section-title">Selected Work</div>
       <div class="three">
-        <article class="proj">
+        <!-- Real-time Dashboard -->
+        <article class="proj float">
           <div class="thumb">
-            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <defs><linearGradient id="g1" x1="0" x2="1"><stop stop-color="#3b82f6" offset="0"/><stop stop-color="#10b981" offset="1"/></linearGradient></defs>
-              <rect width="120" height="80" rx="8" fill="url(#g1)"/>
-              <rect x="10" y="12" width="100" height="10" rx="3" fill="#ffffff66"/>
-              <rect x="10" y="28" width="70" height="10" rx="3" fill="#ffffff66"/>
-              <rect x="10" y="44" width="90" height="10" rx="3" fill="#ffffff66"/>
-            </svg>
+            <img
+              src="https://images.unsplash.com/photo-1543286386-713bdd548da4?q=80&w=1600&auto=format&fit=crop"
+              alt="Real-time dashboard graphs and charts"
+              loading="lazy"
+              width="1600" height="1000"
+            />
           </div>
           <div class="p-body">
             <div class="p-title">Real-time Dashboard</div>
             <div class="muted">Live metrics and alerts (React + WebSocket + Node).</div>
           </div>
         </article>
-        <article class="proj">
+
+        <!-- E-commerce Upgrade -->
+        <article class="proj float">
           <div class="thumb">
-            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <defs><linearGradient id="g2" x1="0" x2="1"><stop stop-color="#3b82f6" offset="0"/><stop stop-color="#10b981" offset="1"/></linearGradient></defs>
-              <rect width="120" height="80" rx="8" fill="url(#g2)"/>
-              <circle cx="26" cy="40" r="12" fill="#ffffff66"/>
-              <rect x="44" y="28" width="66" height="10" rx="3" fill="#ffffff66"/>
-              <rect x="44" y="44" width="52" height="10" rx="3" fill="#ffffff66"/>
-            </svg>
+            <img
+              src="https://images.unsplash.com/photo-1515165562835-c3b8c1ae5c76?q=80&w=1600&auto=format&fit=crop"
+              alt="Modern e-commerce storefront on laptop and phone"
+              loading="lazy"
+              width="1600" height="1000"
+            />
           </div>
           <div class="p-body">
             <div class="p-title">E-commerce Upgrade</div>
             <div class="muted">High-converting storefront + payments (Next.js + Stripe).</div>
           </div>
         </article>
-        <article class="proj">
+
+        <!-- AI Support Assistant -->
+        <article class="proj float">
           <div class="thumb">
-            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <defs><linearGradient id="g3" x1="0" x2="1"><stop stop-color="#3b82f6" offset="0"/><stop stop-color="#10b981" offset="1"/></linearGradient></defs>
-              <rect width="120" height="80" rx="8" fill="url(#g3)"/>
-              <rect x="10" y="20" width="100" height="12" rx="3" fill="#ffffff66"/>
-              <rect x="10" y="38" width="86" height="12" rx="3" fill="#ffffff66"/>
-              <rect x="10" y="56" width="72" height="12" rx="3" fill="#ffffff66"/>
-            </svg>
+            <img
+              src="https://images.unsplash.com/photo-1551281044-8d8d0d8d0d6b?q=80&w=1600&auto=format&fit=crop"
+              alt="Chat interface with AI assistant"
+              loading="lazy"
+              width="1600" height="1000"
+            />
           </div>
           <div class="p-body">
             <div class="p-title">AI Support Assistant</div>
@@ -214,7 +217,7 @@
     </section>
 
     <!-- Process -->
-    <section id="process" class="card reveal float">
+    <section id="process" class="section reveal float">
       <div class="section-title">Process (fast & clear)</div>
       <div class="cols" style="align-items:flex-start">
         <div>
@@ -225,7 +228,7 @@
             <div class="step"><strong>Launch</strong><div class="muted">Deploy, handover docs, support window.</div></div>
           </div>
         </div>
-        <div class="card" style="border:1px solid var(--line)">
+        <div class="section" style="border:1px solid var(--line); margin:0">
           <div class="section-title">Highlights</div>
           <ul class="muted" style="margin:8px 0 0 18px">
             <li>Attention to detail and UX polish</li>
@@ -237,15 +240,15 @@
     </section>
 
     <!-- FAQ -->
-    <section id="faq" class="card reveal float">
+    <section id="faq" class="section reveal float">
       <div class="section-title">FAQ</div>
-      <details class="card" style="margin-top:8px"><summary><strong>How fast can we start?</strong></summary><div class="muted" style="margin-top:8px">I can usually start within a few days. For MVPs, a first version in 1–2 weeks depending on scope.</div></details>
-      <details class="card" style="margin-top:8px"><summary><strong>Do you work hourly or fixed price?</strong></summary><div class="muted" style="margin-top:8px">Either. For well-scoped projects: fixed-price milestones. Otherwise hourly until scope settles.</div></details>
-      <details class="card" style="margin-top:8px"><summary><strong>What tech do you use?</strong></summary><div class="muted" style="margin-top:8px">React/Next.js, Node/Express, Postgres or Mongo, and modern CI/CD.</div></details>
+      <details class="section" style="margin:8px 0 0 0"><summary><strong>How fast can we start?</strong></summary><div class="muted" style="margin-top:8px">I can usually start within a few days. For MVPs, a first version in 1–2 weeks depending on scope.</div></details>
+      <details class="section" style="margin-top:8px"><summary><strong>Do you work hourly or fixed price?</strong></summary><div class="muted" style="margin-top:8px">Either. For well-scoped projects: fixed-price milestones. Otherwise hourly until scope settles.</div></details>
+      <details class="section" style="margin-top:8px"><summary><strong>What tech do you use?</strong></summary><div class="muted" style="margin-top:8px">React/Next.js, Node/Express, Postgres or Mongo, and modern CI/CD.</div></details>
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="card reveal float">
+    <section id="contact" class="section reveal float">
       <div class="section-title">Let’s work together</div>
       <p class="muted">Tell me about your project. I usually reply within 24 hours.</p>
       <form id="contactForm" style="margin-top:8px">
@@ -277,7 +280,7 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-    // Optional tiny float based on cursor (very subtle)
+    // Subtle mouse float across elements
     (()=>{
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (reduce) return;
@@ -296,7 +299,7 @@
         tx = lerp(tx, mx, 0.08);
         ty = lerp(ty, my, 0.08);
         floats.forEach(el=>{
-          const x = -tx * 4;
+          const x = -tx * 4;   // subtle translate
           const y = -ty * 4;
           el.style.transform = `translate3d(${x}px, ${y}px, 0)`;
         });
@@ -306,7 +309,7 @@
       window.addEventListener('pointerleave', ()=>{ mx = my = 0; if (!raf) raf = requestAnimationFrame(tick); });
     })();
 
-    // Contact form (posts to /api/leads). On static hosting this may not exist.
+    // Contact form (posts to /api/leads). On static hosting this endpoint may not exist.
     const form = document.getElementById('contactForm');
     const st = document.getElementById('cstatus');
     if (form) {
