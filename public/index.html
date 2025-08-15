@@ -4,44 +4,47 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Matan Goldshtein — Portfolio</title>
-  <meta name="description" content="Full-stack developer building clean, fast, business-driven web apps. Services, work, process, and contact." />
+  <meta name="description" content="Full-stack developer building clean, fast, business-driven web apps." />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
-    /* ===== Light, airy, harmonious with subtle glass ===== */
     :root{
-      --bg:#ffffff;
-      --ink:#0f172a;
-      --muted:#64748b;
-      --line:rgba(2,6,23,.08);
-      --surface:rgba(255,255,255,.72);        /* translucent cards */
-      --surface-strong:rgba(255,255,255,.88); /* stronger glass for header */
-      --a1:#3b82f6; /* blue */
-      --a2:#10b981; /* teal */
+      --ink:#0f172a;           /* main text */
+      --muted:#64748b;         /* secondary */
+      --line:rgba(2,6,23,.08); /* borders */
+      --surface:rgba(255,255,255,.75);
+      --surface-strong:rgba(255,255,255,.88);
+      --a1:#3b82f6;            /* blue */
+      --a2:#10b981;            /* teal */
       --ring:rgba(59,130,246,.18);
       --shadow:0 18px 50px rgba(15,23,42,.08);
       --radius:18px;
       --gap:22px;
       --lift:6px;
+      --dot:#e6edf7;           /* dot color for grid */
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0; font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--ink);
-      /* very light, subtle gradient background */
+      /* ===== Background: subtle gradient + dotted grid ===== */
       background:
-        radial-gradient(1200px 800px at 8% -10%, rgba(59,130,246,.10), transparent 55%),
-        radial-gradient(1200px 900px at 100% 0%, rgba(16,185,129,.08), transparent 55%),
-        linear-gradient(180deg, #f9fbff, #f7fcfb 35%, #ffffff 70%);
+        radial-gradient(circle at 0 0, var(--dot) 1px, transparent 1.5px) 0 0/28px 28px,
+        radial-gradient(circle at 14px 14px, var(--dot) 1px, transparent 1.5px) 0 0/28px 28px,
+        linear-gradient(180deg, #f9fbff, #f7fcfb 40%, #ffffff 75%),
+        radial-gradient(1200px 800px at 8% -10%, rgba(59,130,246,.08), transparent 55%),
+        radial-gradient(1200px 900px at 100% 0%, rgba(16,185,129,.06), transparent 55%);
       -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
       overflow-x:hidden;
     }
+
     a{color:inherit; text-decoration:none}
     .wrap{max-width:1100px; margin:0 auto; padding:32px 20px}
 
-    /* Header (removed the colored mark) */
+    /* ===== Header ===== */
     header{
       position:sticky; top:0; z-index:20;
       backdrop-filter:saturate(140%) blur(10px);
@@ -49,30 +52,21 @@
       border-bottom:1px solid var(--line);
     }
     .nav{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:12px 0}
-    .brand{font-weight:900; letter-spacing:-.02em}
+    .brand{font-weight:900; letter-spacing:-.02em; font-size:16px}
     .links{display:flex; gap:10px; flex-wrap:wrap}
     .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:10px 14px; border-radius:999px;
-      border:1px solid var(--line); background:rgba(255,255,255,.85);
-      box-shadow:0 6px 20px rgba(15,23,42,.05);
+      display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px;
+      border:1px solid var(--line); background:rgba(255,255,255,.9); box-shadow:0 6px 20px rgba(15,23,42,.05)
     }
     .btn{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:12px 18px; border-radius:12px; font-weight:800; border:0; cursor:pointer; color:#fff;
-      background:linear-gradient(90deg, var(--a1), var(--a2));
-      box-shadow:var(--shadow);
+      display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:12px; font-weight:800; border:0; cursor:pointer; color:#fff;
+      background:linear-gradient(90deg, var(--a1), var(--a2)); box-shadow:var(--shadow)
     }
 
-    /* Sections with tasteful translucency */
+    /* ===== Sections / Cards ===== */
     .section{
-      background:var(--surface);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:26px;
-      box-shadow:var(--shadow);
-      margin-bottom:var(--gap);
-      backdrop-filter: blur(12px) saturate(120%);
+      background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+      padding:26px; box-shadow:var(--shadow); margin-bottom:var(--gap); backdrop-filter: blur(12px) saturate(120%);
     }
     .title{font-size:clamp(34px,5.2vw,54px); font-weight:900; letter-spacing:-.03em; margin:0}
     .section-title{
@@ -82,21 +76,25 @@
     .muted{color:var(--muted)}
     .sp{height:1px; background:linear-gradient(90deg, transparent, rgba(2,6,23,.08), transparent); margin:24px 0}
 
-    /* Layout grids */
     .cols{display:grid; grid-template-columns:1.05fr .95fr; gap:var(--gap); align-items:center}
-    @media (max-width: 960px){ .cols{grid-template-columns:1fr} }
     .three{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap)}
+    @media (max-width: 960px){ .cols{grid-template-columns:1fr} }
     @media (max-width:1040px){ .three{grid-template-columns:repeat(2,1fr)} }
-    @media (max-width:680px){ .three{grid-template-columns:1fr} }
+    @media (max-width:680px){
+      .three{grid-template-columns:1fr}
+      .links{gap:6px}
+      .pill{padding:8px 12px}
+      .btn{padding:11px 16px}
+    }
 
     /* Project cards */
-    .proj{border:1px solid var(--line); border-radius:16px; background:rgba(255,255,255,.85); overflow:hidden; display:flex; flex-direction:column; backdrop-filter:blur(6px)}
+    .proj{border:1px solid var(--line); border-radius:16px; background:rgba(255,255,255,.9); overflow:hidden; display:flex; flex-direction:column; backdrop-filter:blur(6px)}
     .thumb{aspect-ratio:16/10; width:100%; overflow:hidden; background:#f3f5f9}
     .thumb img{width:100%; height:100%; object-fit:cover; display:block; transform:scale(1.02)}
     .p-body{padding:14px}
     .p-title{font-weight:800}
 
-    /* Process steps */
+    /* Steps */
     .steps{counter-reset:s}
     .step{position:relative; padding-left:44px; margin:12px 0}
     .step::before{counter-increment:s; content:counter(s); position:absolute; left:0; top:0; width:32px; height:32px; border-radius:9px; display:grid; place-items:center;
@@ -109,7 +107,7 @@
     input:focus,textarea:focus{border-color:#cfe1ff; box-shadow:0 0 0 4px var(--ring)}
     footer{color:var(--muted); font-size:12px; padding:20px 0; text-align:center}
 
-    /* Motion (subtle + responsive) */
+    /* Motion (subtle) */
     html{scroll-behavior:smooth}
     @media (prefers-reduced-motion:no-preference){
       .reveal{opacity:0; transform:translateY(8px); transition:opacity .6s ease, transform .6s ease}
@@ -117,186 +115,191 @@
       .float{will-change:transform, box-shadow; transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s}
       .lift:hover{transform:translateY(calc(var(--lift) * -1))}
     }
+
+    /* ===== Intro Modal (Under Construction) ===== */
+    #app.modal-blur{filter:blur(6px); pointer-events:none; user-select:none}
+    .modal-backdrop{
+      position:fixed; inset:0; background:rgba(2,6,23,.25);
+      backdrop-filter: blur(6px) saturate(120%);
+      display:flex; align-items:center; justify-content:center;
+      z-index:50; padding:20px;
+    }
+    .modal{
+      max-width:520px; width:100%;
+      background:rgba(255,255,255,.92);
+      border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow);
+      padding:22px;
+    }
+    .modal h3{margin:0 0 6px; font-size:22px}
+    .modal p{margin:0; color:var(--muted)}
+    .modal .actions{display:flex; justify-content:flex-end; gap:10px; margin-top:16px}
+    .modal .btn-ok{border:0; padding:11px 16px; border-radius:12px; font-weight:800; cursor:pointer; color:#fff; background:linear-gradient(90deg, var(--a1), var(--a2))}
   </style>
 </head>
 <body>
-  <!-- Header (no square icon) -->
-  <header>
-    <div class="wrap nav">
-      <div class="brand">Matan Goldshtein</div>
-      <nav class="links">
-        <a class="pill" href="#services">Services</a>
-        <a class="pill" href="#work">Work</a>
-        <a class="pill" href="#process">Process</a>
-        <a class="pill" href="#faq">FAQ</a>
-        <a class="btn lift" href="#contact">Hire me</a>
-      </nav>
+  <!-- App wrapper so we can blur it when modal is open -->
+  <div id="app">
+    <header>
+      <div class="wrap nav">
+        <div class="brand">Matan Goldshtein</div>
+        <nav class="links">
+          <a class="pill" href="#services">Services</a>
+          <a class="pill" href="#work">Work</a>
+          <a class="pill" href="#process">Process</a>
+          <a class="pill" href="#faq">FAQ</a>
+          <a class="btn lift" href="#contact">Hire me</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap" style="margin-top:var(--gap)">
+      <!-- Hero -->
+      <section class="section reveal float">
+        <div class="cols">
+          <div>
+            <h1 class="title">I build clean, fast web apps</h1>
+            <p class="muted">Full-stack developer focused on elegant UI, performance, and meaningful business outcomes.</p>
+            <div style="display:flex; gap:12px; margin-top:14px; flex-wrap:wrap">
+              <a href="#contact" class="btn lift">Start a project</a>
+              <a href="#services" class="pill lift">What I offer</a>
+            </div>
+            <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap">
+              <span class="pill">JavaScript • TypeScript</span>
+              <span class="pill">React • Node</span>
+              <span class="pill">APIs • Integrations</span>
+              <span class="pill">AI features</span>
+            </div>
+          </div>
+          <div class="section" style="margin:0">
+            <div class="section-title">Why clients choose me</div>
+            <ul class="muted" style="margin:10px 0 0 18px">
+              <li>Interfaces that feel effortless and fast</li>
+              <li>Clear communication and dependable delivery</li>
+              <li>Pragmatic engineering — ship value first</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section id="services" class="section reveal float">
+        <div class="section-title">Services that move the needle</div>
+        <p class="muted">Reliable software that looks great and grows your business.</p>
+        <div class="three" style="margin-top:14px">
+          <div class="section float" style="margin:0">
+            <div style="font-weight:900; margin-bottom:6px">MVP in Days</div>
+            <div class="muted">Idea → live product (landing page, backend API, data).</div>
+            <ul class="muted" style="margin:10px 0 0 18px"><li>Clean UI</li><li>Auth & forms</li><li>Deploy included</li></ul>
+          </div>
+          <div class="section float" style="margin:0">
+            <div style="font-weight:900; margin-bottom:6px">Web App Upgrades</div>
+            <div class="muted">Speed, UX, and reliability improvements that convert.</div>
+            <ul class="muted" style="margin:10px 0 0 18px"><li>Performance tuning</li><li>UI/UX polish</li><li>Bug fixing</li></ul>
+          </div>
+          <div class="section float" style="margin:0">
+            <div style="font-weight:900; margin-bottom:6px">Integrations & Automation</div>
+            <div class="muted">Connect tools and remove manual work with APIs + lightweight AI.</div>
+            <ul class="muted" style="margin:10px 0 0 18px"><li>Payments & email</li><li>CRM / DB sync</li><li>AI chat & summaries</li></ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Selected Work -->
+      <section id="work" class="section reveal float">
+        <div class="section-title">Selected Work</div>
+        <div class="three">
+          <article class="proj float">
+            <div class="thumb">
+              <img src="https://images.pexels.com/photos/6476587/pexels-photo-6476587.jpeg?auto=compress&cs=tinysrgb&h=800&w=1200" alt="Real-time dashboard on a computer screen" loading="lazy" width="1200" height="800" />
+            </div>
+            <div class="p-body"><div class="p-title">Real-time Dashboard</div><div class="muted">Live metrics and alerts (React + WebSocket + Node).</div></div>
+          </article>
+
+          <article class="proj float">
+            <div class="thumb">
+              <img src="https://images.pexels.com/photos/7620619/pexels-photo-7620619.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1200&h=800" alt="E-commerce storefront on a laptop screen" loading="lazy" width="1200" height="800" />
+            </div>
+            <div class="p-body"><div class="p-title">E-commerce Upgrade</div><div class="muted">High-converting storefront + payments (Next.js + Stripe).</div></div>
+          </article>
+
+          <article class="proj float">
+            <div class="thumb">
+              <img src="https://images.pexels.com/photos/30530407/pexels-photo-30530407.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1200&h=800" alt="AI chat interface on a computer screen" loading="lazy" width="1200" height="800" />
+            </div>
+            <div class="p-body"><div class="p-title">AI Support Assistant</div><div class="muted">Custom chat for FAQs and triage (Node + LLM API).</div></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Process -->
+      <section id="process" class="section reveal float">
+        <div class="section-title">Process (fast & clear)</div>
+        <div class="cols" style="align-items:flex-start">
+          <div>
+            <div class="steps">
+              <div class="step"><strong>Discovery</strong><div class="muted">Quick call + scope, success metrics, timelines.</div></div>
+              <div class="step"><strong>Design</strong><div class="muted">Wireframe → clean UI with consistent components.</div></div>
+              <div class="step"><strong>Build</strong><div class="muted">Iterative shipping; clear weekly updates.</div></div>
+              <div class="step"><strong>Launch</strong><div class="muted">Deploy, handover docs, support window.</div></div>
+            </div>
+          </div>
+          <div class="section" style="margin:0">
+            <div class="section-title">Highlights</div>
+            <ul class="muted" style="margin:8px 0 0 18px">
+              <li>Attention to detail and UX polish</li>
+              <li>Production-ready code and best practices</li>
+              <li>Transparent pricing & communication</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ (sales-focused) -->
+      <section id="faq" class="section reveal float">
+        <div class="section-title">FAQ</div>
+        <details class="section" style="margin:8px 0 0 0"><summary><strong>What projects are the best fit?</strong></summary><div class="muted" style="margin-top:8px">MVPs, product revamps, and integrations that need clear UX and reliable engineering. If users must love it and it must ship on time, I’m in.</div></details>
+        <details class="section" style="margin-top:8px"><summary><strong>How soon can we start?</strong></summary><div class="muted" style="margin-top:8px">Usually within a few days. First milestone plan delivered after our kickoff call.</div></details>
+        <details class="section" style="margin-top:8px"><summary><strong>Pricing & billing?</strong></summary><div class="muted" style="margin-top:8px">Fixed-price per milestone for well-scoped work; otherwise time & materials until scope is stable. Either way you get weekly updates and demos.</div></details>
+        <details class="section" style="margin-top:8px"><summary><strong>Post-launch support?</strong></summary><div class="muted" style="margin-top:8px">Yes — bug fixes, enhancements, and retainer options for ongoing velocity.</div></details>
+        <details class="section" style="margin-top:8px"><summary><strong>Can you add AI features?</strong></summary><div class="muted" style="margin-top:8px">Absolutely. I integrate chat, smart search, summarization, and workflow automations in a pragmatic way — value first.</div></details>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="section reveal float">
+        <div class="section-title">Let’s work together</div>
+        <p class="muted">Tell me about your project. I usually reply within 24 hours.</p>
+        <form id="contactForm" style="margin-top:8px">
+          <div class="row"><label for="name">Name</label><input id="name" name="name" placeholder="Your name" /></div>
+          <div class="row"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@example.com" required /></div>
+          <div class="row"><label for="message">Project brief</label><textarea id="message" name="message" rows="5" placeholder="A few sentences about what you need"></textarea></div>
+          <input type="text" name="website" id="website" autocomplete="off" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden" tabindex="-1" aria-hidden="true" />
+          <button class="btn lift" type="submit">Send message</button>
+          <p id="cstatus" class="muted" style="margin-top:8px" aria-live="polite"></p>
+        </form>
+        <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap">
+          <a class="pill lift" id="copyEmail" href="mailto:matangold770@gmail.com">Email: matangold770@gmail.com</a>
+          <span class="pill">Availability: Project-based</span>
+        </div>
+      </section>
+
+      <div class="sp"></div>
+    </main>
+
+    <footer>
+      <div class="wrap muted">© <span id="year"></span> Matan Goldshtein • Designed for clarity</div>
+    </footer>
+  </div><!-- /#app -->
+
+  <!-- ===== Under-construction Modal ===== -->
+  <div id="introModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc" hidden>
+    <div class="modal">
+      <h3 id="modalTitle">Heads up</h3>
+      <p id="modalDesc">This website is still under construction.</p>
+      <div class="actions">
+        <button id="modalOk" class="btn-ok">OK</button>
+      </div>
     </div>
-  </header>
-
-  <main class="wrap" style="margin-top:var(--gap)">
-    <!-- Hero -->
-    <section class="section reveal float">
-      <div class="cols">
-        <div>
-          <h1 class="title">I build clean, fast web apps</h1>
-          <p class="muted">Full-stack developer focused on elegant UI, performance, and meaningful business outcomes. Available for selected projects.</p>
-          <div style="display:flex; gap:12px; margin-top:14px; flex-wrap:wrap">
-            <a href="#contact" class="btn lift">Start a project</a>
-            <a href="#services" class="pill lift">What I offer</a>
-          </div>
-          <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap">
-            <span class="pill">JavaScript • TypeScript</span>
-            <span class="pill">React • Node</span>
-            <span class="pill">APIs • Integrations</span>
-            <span class="pill">AI features</span>
-          </div>
-        </div>
-        <div class="section" style="margin:0">
-          <div class="section-title">Why clients choose me</div>
-          <ul class="muted" style="margin:10px 0 0 18px">
-            <li>Interfaces that feel effortless and fast</li>
-            <li>Clear communication and dependable delivery</li>
-            <li>Pragmatic engineering — ship value first</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Services -->
-    <section id="services" class="section reveal float">
-      <div class="section-title">Services that move the needle</div>
-      <p class="muted">I build reliable software that looks great and grows your business.</p>
-      <div class="three" style="margin-top:14px">
-        <div class="section float" style="margin:0">
-          <div style="font-weight:900; margin-bottom:6px">MVP in Days</div>
-          <div class="muted">From idea to live product: landing page, backend API, and data.</div>
-          <ul class="muted" style="margin:10px 0 0 18px"><li>Clean UI</li><li>Auth & forms</li><li>Deploy included</li></ul>
-        </div>
-        <div class="section float" style="margin:0">
-          <div style="font-weight:900; margin-bottom:6px">Web App Upgrades</div>
-          <div class="muted">Speed, UX, and reliability improvements that convert.</div>
-          <ul class="muted" style="margin:10px 0 0 18px"><li>Performance tuning</li><li>UI/UX polish</li><li>Bug fixing</li></ul>
-        </div>
-        <div class="section float" style="margin:0">
-          <div style="font-weight:900; margin-bottom:6px">Integrations & Automation</div>
-          <div class="muted">Connect tools and remove manual work with APIs and lightweight AI.</div>
-          <ul class="muted" style="margin:10px 0 0 18px"><li>Payments & email</li><li>CRM / DB sync</li><li>AI chat & summaries</li></ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Selected Work -->
-    <section id="work" class="section reveal float">
-      <div class="section-title">Selected Work</div>
-      <div class="three">
-        <!-- Real-time Dashboard -->
-        <article class="proj float">
-          <div class="thumb">
-            <img src="https://images.pexels.com/photos/6476587/pexels-photo-6476587.jpeg?auto=compress&cs=tinysrgb&h=800&w=1200"
-                 alt="Real-time dashboard with charts on a computer screen" loading="lazy" width="1200" height="800" />
-          </div>
-          <div class="p-body">
-            <div class="p-title">Real-time Dashboard</div>
-            <div class="muted">Live metrics and alerts (React + WebSocket + Node).</div>
-          </div>
-        </article>
-
-        <!-- E-commerce Upgrade -->
-        <article class="proj float">
-          <div class="thumb">
-            <img src="https://images.pexels.com/photos/7620619/pexels-photo-7620619.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1200&h=800"
-                 alt="E-commerce storefront on a laptop screen" loading="lazy" width="1200" height="800" />
-          </div>
-          <div class="p-body">
-            <div class="p-title">E-commerce Upgrade</div>
-            <div class="muted">High-converting storefront + payments (Next.js + Stripe).</div>
-          </div>
-        </article>
-
-        <!-- AI Support Assistant -->
-        <article class="proj float">
-          <div class="thumb">
-            <img src="https://images.pexels.com/photos/30530407/pexels-photo-30530407.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1200&h=800"
-                 alt="AI chat interface on a computer screen" loading="lazy" width="1200" height="800" />
-          </div>
-          <div class="p-body">
-            <div class="p-title">AI Support Assistant</div>
-            <div class="muted">Custom chat for FAQs and triage (Node + LLM API).</div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Process -->
-    <section id="process" class="section reveal float">
-      <div class="section-title">Process (fast & clear)</div>
-      <div class="cols" style="align-items:flex-start">
-        <div>
-          <div class="steps">
-            <div class="step"><strong>Discovery</strong><div class="muted">Quick call + scope, success metrics, timelines.</div></div>
-            <div class="step"><strong>Design</strong><div class="muted">Wireframe → clean UI with consistent components.</div></div>
-            <div class="step"><strong>Build</strong><div class="muted">Iterative shipping; clear weekly updates.</div></div>
-            <div class="step"><strong>Launch</strong><div class="muted">Deploy, handover docs, support window.</div></div>
-          </div>
-        </div>
-        <div class="section" style="margin:0">
-          <div class="section-title">Highlights</div>
-          <ul class="muted" style="margin:8px 0 0 18px">
-            <li>Attention to detail and UX polish</li>
-            <li>Production-ready code and best practices</li>
-            <li>Transparent pricing & communication</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ (expanded, sales-oriented) -->
-    <section id="faq" class="section reveal float">
-      <div class="section-title">FAQ</div>
-      <details class="section" style="margin:8px 0 0 0">
-        <summary><strong>What kinds of projects are the best fit?</strong></summary>
-        <div class="muted" style="margin-top:8px">MVPs, product revamps, and integrations that need clear UX and reliable engineering. If it ships to users and needs to look/feel great, I’m in.</div>
-      </details>
-      <details class="section" style="margin-top:8px">
-        <summary><strong>How do we start and how soon?</strong></summary>
-        <div class="muted" style="margin-top:8px">Send a short brief below. We’ll have a quick call to align on scope and success metrics. I can usually start within a few days.</div>
-      </details>
-      <details class="section" style="margin-top:8px">
-        <summary><strong>Pricing?</strong></summary>
-        <div class="muted" style="margin-top:8px">Fixed-price milestones for well-scoped work (e.g., MVP, redesign), or hourly until scope is stable. Either way you’ll get timelines and progress updates you can trust.</div>
-      </details>
-      <details class="section" style="margin-top:8px">
-        <summary><strong>What about ongoing support?</strong></summary>
-        <div class="muted" style="margin-top:8px">I offer post-launch support, bug fixes, and iterative improvements. I’m available for retainers if you want consistent velocity.</div>
-      </details>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="section reveal float">
-      <div class="section-title">Let’s work together</div>
-      <p class="muted">Tell me about your project. I usually reply within 24 hours.</p>
-      <form id="contactForm" style="margin-top:8px">
-        <div class="row"><label for="name">Name</label><input id="name" name="name" placeholder="Your name" /></div>
-        <div class="row"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@example.com" required /></div>
-        <div class="row"><label for="message">Project brief</label><textarea id="message" name="message" rows="5" placeholder="A few sentences about what you need"></textarea></div>
-        <!-- Honeypot -->
-        <input type="text" name="website" id="website" autocomplete="off" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden" tabindex="-1" aria-hidden="true" />
-        <button class="btn lift" type="submit">Send message</button>
-        <p id="cstatus" class="muted" style="margin-top:8px" aria-live="polite"></p>
-      </form>
-      <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap">
-        <a class="pill lift" id="copyEmail" href="mailto:matangold770@gmail.com">Email: matangold770@gmail.com</a>
-        <span class="pill">Availability: Project-based</span>
-      </div>
-    </section>
-
-    <div class="sp"></div>
-  </main>
-
-  <footer>
-    <div class="wrap muted">© <span id="year"></span> Matan Goldshtein • Designed for clarity</div>
-  </footer>
+  </div>
 
   <script>
     // Reveal on scroll
@@ -305,7 +308,7 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-    // Subtle mouse float across elements
+    // Subtle mouse float
     (()=>{
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (reduce) return;
@@ -332,7 +335,31 @@
       window.addEventListener('pointerleave', ()=>{ mx = my = 0; if (!raf) raf = requestAnimationFrame(tick); });
     })();
 
-    // Contact form (static fallback notice if no backend)
+    // Intro modal logic: show on first load, blur app, dismiss on OK
+    const modal = document.getElementById('introModal');
+    const app = document.getElementById('app');
+    const ok = document.getElementById('modalOk');
+
+    function openModal(){
+      modal.hidden = false;
+      app.classList.add('modal-blur');
+      ok.focus();
+    }
+    function closeModal(){
+      modal.hidden = true;
+      app.classList.remove('modal-blur');
+    }
+    // Show modal on first visit in this browser session
+    const SEEN_KEY = 'mg_intro_seen';
+    if (!sessionStorage.getItem(SEEN_KEY)) {
+      openModal();
+      sessionStorage.setItem(SEEN_KEY, '1');
+    }
+    ok.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e)=>{ if (e.target === modal) closeModal(); }); // click backdrop to close
+    window.addEventListener('keydown', (e)=>{ if (e.key === 'Escape' && !modal.hidden) closeModal(); });
+
+    // Contact form (fallback if no backend)
     const form = document.getElementById('contactForm');
     const st = document.getElementById('cstatus');
     if (form) {
