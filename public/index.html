@@ -15,7 +15,7 @@
       --surface:rgba(255,255,255,.75);
       --surface-strong:rgba(255,255,255,.88);
 
-      /* New palette: lavender → indigo */
+      /* Palette: lavender → indigo (calm, premium) */
       --a1:#8b5cf6;  /* lavender/indigo */
       --a2:#6366f1;  /* indigo */
 
@@ -24,7 +24,6 @@
       --radius:18px;
       --gap:22px;
       --lift:6px;
-
       --dot:#e9edfb;            /* dot color for grid */
     }
 
@@ -34,7 +33,7 @@
       margin:0;
       font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--ink);
-      /* Subtle gradient + dotted grid */
+      /* Background: subtle gradient + dotted grid */
       background:
         radial-gradient(circle at 0 0, var(--dot) 1px, transparent 1.5px) 0 0/28px 28px,
         radial-gradient(circle at 14px 14px, var(--dot) 1px, transparent 1.5px) 0 0/28px 28px,
@@ -67,7 +66,7 @@
       background:linear-gradient(90deg, var(--a1), var(--a2)); box-shadow:var(--shadow)
     }
 
-    /* Hamburger */
+    /* Hamburger (shown on mobile) */
     .menu-btn{
       display:none; width:40px; height:40px; border-radius:10px; border:1px solid var(--line);
       background:rgba(255,255,255,.95); cursor:pointer; align-items:center; justify-content:center;
@@ -146,30 +145,11 @@
       .float{will-change:transform, box-shadow; transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s}
       .lift:hover{transform:translateY(calc(var(--lift) * -1))}
     }
-
-    /* ===== Under-construction Modal ===== */
-    #app.modal-blur{filter:blur(6px); pointer-events:none; user-select:none}
-    .modal-backdrop{
-      position:fixed; inset:0; background:rgba(2,6,23,.25);
-      backdrop-filter: blur(8px) saturate(120%);
-      display:flex; align-items:center; justify-content:center;
-      z-index:50; padding:20px;
-    }
-    .modal{
-      max-width:520px; width:100%;
-      background:rgba(255,255,255,.95);
-      border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow);
-      padding:22px;
-    }
-    .modal h3{margin:0 0 6px; font-size:22px}
-    .modal p{margin:0; color:var(--muted)}
-    .modal .actions{display:flex; justify-content:flex-end; gap:10px; margin-top:16px}
-    .modal .btn-ok{border:0; padding:11px 16px; border-radius:12px; font-weight:800; cursor:pointer; color:#fff; background:linear-gradient(90deg, var(--a1), var(--a2))}
   </style>
 </head>
 <body>
-  <!-- App wrapper so we can blur it when modal is open -->
   <div id="app">
+    <!-- ===== Header ===== -->
     <header>
       <div class="wrap nav">
         <div class="brand">Matan Goldshtein</div>
@@ -185,12 +165,12 @@
     </header>
 
     <main class="wrap" style="margin-top:var(--gap)">
-      <!-- Hero -->
+      <!-- ===== Hero ===== -->
       <section class="section reveal float">
         <div class="cols">
           <div>
             <h1 class="title">I build clean, fast web apps</h1>
-            <p class="muted">Full-stack developer focused on elegant UI, performance, and meaningful business outcomes.</p>
+            <p class="muted">Full-stack developer focused on elegant UI, performance, and business results.</p>
             <div style="display:flex; gap:12px; margin-top:14px; flex-wrap:wrap">
               <a href="#contact" class="btn lift">Start a project</a>
               <a href="#services" class="pill lift">What I offer</a>
@@ -213,7 +193,7 @@
         </div>
       </section>
 
-      <!-- Services -->
+      <!-- ===== Services ===== -->
       <section id="services" class="section reveal float">
         <div class="section-title">Services that move the needle</div>
         <p class="muted">Reliable software that looks great and grows your business.</p>
@@ -236,34 +216,49 @@
         </div>
       </section>
 
-      <!-- Selected Work -->
+      <!-- ===== Selected Work ===== -->
       <section id="work" class="section reveal float">
         <div class="section-title">Selected Work</div>
         <div class="three">
+          <!-- Real-time Dashboard -->
           <article class="proj float">
             <div class="thumb">
-              <img src="https://images.pexels.com/photos/6476587/pexels-photo-6476587.jpeg?auto=compress&cs=tinysrgb&h=800&w=1200" alt="Real-time dashboard on a computer screen" loading="lazy" width="1200" height="800" />
+              <img src="https://images.pexels.com/photos/6476587/pexels-photo-6476587.jpeg?auto=compress&cs=tinysrgb&h=800&w=1200"
+                   alt="Real-time dashboard on a computer screen" loading="lazy" width="1200" height="800" />
             </div>
-            <div class="p-body"><div class="p-title">Real-time Dashboard</div><div class="muted">Live metrics and alerts (React + WebSocket + Node).</div></div>
+            <div class="p-body">
+              <div class="p-title">Real-time Dashboard</div>
+              <div class="muted">Live metrics and alerts (React + WebSocket + Node).</div>
+            </div>
           </article>
 
+          <!-- E-commerce Upgrade -->
           <article class="proj float">
             <div class="thumb">
-              <img src="https://images.pexels.com/photos/7620619/pexels-photo-7620619.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1200&h=800" alt="E-commerce storefront on a laptop screen" loading="lazy" width="1200" height="800" />
+              <img src="https://images.pexels.com/photos/7620619/pexels-photo-7620619.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1200&h=800"
+                   alt="E-commerce storefront on a laptop screen" loading="lazy" width="1200" height="800" />
             </div>
-            <div class="p-body"><div class="p-title">E-commerce Upgrade</div><div class="muted">High-converting storefront + payments (Next.js + Stripe).</div></div>
+            <div class="p-body">
+              <div class="p-title">E-commerce Upgrade</div>
+              <div class="muted">High-converting storefront + payments (Next.js + Stripe).</div>
+            </div>
           </article>
 
+          <!-- AI Support Assistant -->
           <article class="proj float">
             <div class="thumb">
-              <img src="https://images.pexels.com/photos/30530407/pexels-photo-30530407.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1200&h=800" alt="AI chat interface on a computer screen" loading="lazy" width="1200" height="800" />
+              <img src="https://images.pexels.com/photos/30530407/pexels-photo-30530407.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1200&h=800"
+                   alt="AI chat interface on a computer screen" loading="lazy" width="1200" height="800" />
             </div>
-            <div class="p-body"><div class="p-title">AI Support Assistant</div><div class="muted">Custom chat for FAQs and triage (Node + LLM API).</div></div>
+            <div class="p-body">
+              <div class="p-title">AI Support Assistant</div>
+              <div class="muted">Custom chat for FAQs and triage (Node + LLM API).</div>
+            </div>
           </article>
         </div>
       </section>
 
-      <!-- Process -->
+      <!-- ===== Process ===== -->
       <section id="process" class="section reveal float">
         <div class="section-title">Process (fast & clear)</div>
         <div class="cols" style="align-items:flex-start">
@@ -286,7 +281,7 @@
         </div>
       </section>
 
-      <!-- FAQ (sales-focused) -->
+      <!-- ===== FAQ ===== -->
       <section id="faq" class="section reveal float">
         <div class="section-title">FAQ</div>
         <details class="section" style="margin:8px 0 0 0"><summary><strong>What projects are the best fit?</strong></summary><div class="muted" style="margin-top:8px">MVPs, product revamps, and integrations that need clear UX and reliable engineering. If users must love it and it must ship on time, I’m in.</div></details>
@@ -296,7 +291,7 @@
         <details class="section" style="margin-top:8px"><summary><strong>Can you add AI features?</strong></summary><div class="muted" style="margin-top:8px">Absolutely. I integrate chat, smart search, summarization, and workflow automations in a pragmatic way — value first.</div></details>
       </section>
 
-      <!-- Contact -->
+      <!-- ===== Contact ===== -->
       <section id="contact" class="section reveal float">
         <div class="section-title">Let’s work together</div>
         <p class="muted">Tell me about your project. I usually reply within 24 hours.</p>
@@ -323,24 +318,13 @@
   </div><!-- /#app -->
 
   <!-- Menu overlay -->
-  <div class="menu" id="menu">
-    <div class="menu-panel">
-      <a href="#services">Services</a>
-      <a href="#work">Work</a>
-      <a href="#process">Process</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Hire me</a>
-    </div>
-  </div>
-
-  <!-- Under-construction Modal -->
-  <div id="introModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc" hidden>
-    <div class="modal">
-      <h3 id="modalTitle">Heads up</h3>
-      <p id="modalDesc">This website is still under construction.</p>
-      <div class="actions">
-        <button id="modalOk" class="btn-ok" type="button">OK</button>
-      </div>
+  <div class="menu" id="menu" aria-hidden="true">
+    <div class="menu-panel" role="menu">
+      <a href="#services" role="menuitem">Services</a>
+      <a href="#work" role="menuitem">Work</a>
+      <a href="#process" role="menuitem">Process</a>
+      <a href="#faq" role="menuitem">FAQ</a>
+      <a href="#contact" role="menuitem">Hire me</a>
     </div>
   </div>
 
@@ -378,38 +362,14 @@
       window.addEventListener('pointerleave', ()=>{ mx = my = 0; if (!raf) raf = requestAnimationFrame(tick); });
     })();
 
-    // ===== Menu button =====
+    // Menu button
     const menuBtn = document.getElementById('menuBtn');
     const menu = document.getElementById('menu');
-    menuBtn?.addEventListener('click', ()=> menu.classList.toggle('open'));
-    menu?.addEventListener('click', (e)=>{ if (e.target === menu) menu.classList.remove('open'); });
-
-    // ===== Intro modal (robust close handlers) =====
-    const modal = document.getElementById('introModal');
-    const app = document.getElementById('app');
-    const ok = document.getElementById('modalOk');
-
-    function openModal(){
-      modal.hidden = false;
-      app.classList.add('modal-blur');
-      ok?.focus();
-    }
-    function closeModal(){
-      modal.hidden = true;
-      app.classList.remove('modal-blur');
-    }
-
-    // Show once per session
-    const SEEN_KEY = 'mg_intro_seen';
-    if (!sessionStorage.getItem(SEEN_KEY)) {
-      openModal();
-      sessionStorage.setItem(SEEN_KEY, '1');
-    }
-
-    // Close on OK, on backdrop click, or on Esc
-    ok?.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e)=>{ if (e.target === modal) closeModal(); });
-    window.addEventListener('keydown', (e)=>{ if (e.key === 'Escape' && !modal.hidden) closeModal(); });
+    menuBtn?.addEventListener('click', ()=>{
+      menu.classList.toggle('open');
+      menu.setAttribute('aria-hidden', menu.classList.contains('open') ? 'false' : 'true');
+    });
+    menu?.addEventListener('click', (e)=>{ if (e.target === menu) { menu.classList.remove('open'); menu.setAttribute('aria-hidden','true'); } });
 
     // Contact form (fallback if no backend)
     const form = document.getElementById('contactForm');
