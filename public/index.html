@@ -8,111 +8,94 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
-    /* ===== Theme: dark + harmonious gradient system ===== */
+    /* ===== Light theme — calm, consistent, uncluttered ===== */
     :root{
-      --bg:#0b0d12;          /* page */
-      --surface:#0f1320;     /* cards */
-      --ink:#eef3ff;         /* text */
-      --muted:#9aa4b7;       /* secondary */
-      --line:#1d2334;        /* borders */
-      --a1:#7c5cff;          /* accent violet */
-      --a2:#10b981;          /* accent teal */
-      --ring:rgba(124,92,255,.22);
-      --shadow:0 24px 70px rgba(2,6,23,.55);
-      --r:22px; --rsm:14px;
-      --scroll: 0;           /* updated by JS */
-      --lift: 8px;           /* hover lift */
+      --bg:#f7f8fb;            /* page background */
+      --surface:#ffffff;       /* cards */
+      --ink:#0f172a;           /* main text */
+      --muted:#64748b;         /* secondary text */
+      --line:#e6e9f0;          /* borders/dividers */
+      --a1:#3b82f6;            /* blue */
+      --a2:#10b981;            /* teal */
+      --ring:rgba(59,130,246,.18);
+      --shadow:0 10px 30px rgba(15,23,42,.06);
+      --radius:18px; --rsm:12px;
+      --lift: 6px;
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      margin:0; font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--ink);
       background:
-        radial-gradient(1100px 700px at 10% calc(-10% + (var(--scroll) * -0.02px)), rgba(124,92,255,.16), transparent 55%),
-        radial-gradient(1200px 800px at 95% calc(0% + (var(--scroll) * -0.015px)), rgba(16,185,129,.14), transparent 55%),
+        radial-gradient(1200px 800px at 10% 0%, rgba(59,130,246,.08), transparent 55%),
+        radial-gradient(1200px 900px at 90% 10%, rgba(16,185,129,.08), transparent 55%),
         var(--bg);
       -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
       overflow-x:hidden;
     }
     a{color:inherit; text-decoration:none}
-    .wrap{max-width:1120px;margin:0 auto;padding:28px 18px}
+    .wrap{max-width:1100px; margin:0 auto; padding:28px 18px}
 
-    /* ===== Ambient pointer glow (GPU-friendly) ===== */
-    #glow{position:fixed;inset:0;pointer-events:none;z-index:0}
-    #glow::before{content:"";position:absolute;width:460px;height:460px;border-radius:50%;
-      transform:translate3d(-50%,-50%,0) scale(var(--glowScale,1));left:var(--mx,-200px);top:var(--my,-200px);
-      background:radial-gradient(closest-side, rgba(124,92,255,.25), rgba(16,185,129,.15), transparent 70%);
-      filter:blur(22px);opacity:calc(.45 + (var(--glowOpacity,0) * .2));mix-blend-mode:screen;transition:transform .25s ease, opacity .25s ease}
+    /* Header */
+    header{position:sticky; top:0; z-index:10; backdrop-filter:saturate(140%) blur(8px);
+      background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.7)); border-bottom:1px solid var(--line)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:12px 0}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:-.02em}
+    .mark{width:28px; height:28px; border-radius:10px; background:linear-gradient(135deg, var(--a1), var(--a2)); box-shadow:0 6px 16px rgba(16,185,129,.25)}
+    .links{display:flex; gap:10px; flex-wrap:wrap}
+    .pill{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; border:1px solid var(--line); background:#fff; color:var(--ink)}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:11px 16px; border-radius:12px; font-weight:800; border:0; cursor:pointer; color:#fff;
+      background:linear-gradient(90deg, var(--a1), var(--a2)); box-shadow:var(--shadow)}
 
-    /* ===== Header / Nav ===== */
-    header{position:sticky;top:0;z-index:10;backdrop-filter:saturate(140%) blur(10px);
-      background:linear-gradient(180deg, rgba(15,19,32,.88), rgba(15,19,32,.66));border-bottom:1px solid var(--line)}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 0}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:-.02em}
-    .mark{width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg,var(--a1),var(--a2));box-shadow:0 8px 20px rgba(124,92,255,.25)}
-    .links{display:flex;gap:10px}
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:#0c1020;color:var(--ink)}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border-radius:14px;font-weight:800;border:0;cursor:pointer;color:#fff;
-      background:linear-gradient(90deg,var(--a1),var(--a2));box-shadow:var(--shadow)}
-
-    /* ===== Sections ===== */
-    .card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px;box-shadow:var(--shadow);z-index:1}
-    .title{font-size:clamp(36px,5.6vw,64px);font-weight:900;letter-spacing:-.03em;margin:0}
-    .section-title{font-size:24px;font-weight:900;letter-spacing:-.01em;margin:0 0 10px;background:linear-gradient(90deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    /* Sections */
+    .card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow)}
+    .title{font-size:clamp(34px,5.6vw,56px); font-weight:900; letter-spacing:-.03em; margin:0}
+    .section-title{font-size:22px; font-weight:900; letter-spacing:-.01em; margin:0 0 10px;
+      background:linear-gradient(90deg, var(--a1), var(--a2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent}
     .muted{color:var(--muted)}
+    .sp{height:1px; background:linear-gradient(90deg, transparent, rgba(2,6,23,.08), transparent); margin:24px 0}
 
-    /* Grids */
-    .cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    @media (max-width: 900px){.cols{grid-template-columns:1fr}}
-    .three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    @media (max-width: 1060px){.three{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width: 680px){.three{grid-template-columns:1fr}}
+    /* Layout grids */
+    .cols{display:grid; grid-template-columns:1.1fr .9fr; gap:18px; align-items:center}
+    @media (max-width: 960px){ .cols{grid-template-columns:1fr} }
+    .three{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    @media (max-width: 1040px){ .three{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width: 680px){ .three{grid-template-columns:1fr} }
 
-    /* Work cards */
-    .proj{border:1px solid var(--line);border-radius:18px;background:#0c1020;overflow:hidden}
-    .thumb{aspect-ratio:16/10;display:grid;place-items:center;background:linear-gradient(135deg,rgba(124,92,255,.18),rgba(16,185,129,.14))}
-    .thumb svg{width:42%;opacity:.9}
+    /* Project cards */
+    .proj{border:1px solid var(--line); border-radius:16px; background:#fff; overflow:hidden}
+    .thumb{aspect-ratio:16/10; display:grid; place-items:center; background:linear-gradient(135deg, rgba(59,130,246,.12), rgba(16,185,129,.12))}
+    .thumb svg{width:42%; opacity:.85}
     .p-body{padding:14px}
     .p-title{font-weight:800}
 
     /* Process steps */
     .steps{counter-reset:s}
-    .step{position:relative;padding-left:44px;margin:10px 0}
-    .step::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:9px;display:grid;place-items:center;
-      background:linear-gradient(135deg,var(--a1),var(--a2));color:#fff;font-weight:800}
+    .step{position:relative; padding-left:44px; margin:10px 0}
+    .step::before{counter-increment:s; content:counter(s); position:absolute; left:0; top:0; width:32px; height:32px; border-radius:9px; display:grid; place-items:center;
+      background:linear-gradient(135deg, var(--a1), var(--a2)); color:#fff; font-weight:800}
 
     /* Form */
-    .row{display:grid;gap:8px;margin-bottom:12px}
-    label{font-size:13px;color:var(--muted)}
-    input,textarea{width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:#0c1020;color:var(--ink);font-size:16px;outline:none;transition:border .15s ease, box-shadow .15s ease}
-    input:focus,textarea:focus{border-color:#384a7a;box-shadow:0 0 0 5px var(--ring)}
-    .hint{font-size:12px;color:var(--muted)}
+    .row{display:grid; gap:8px; margin-bottom:12px}
+    label{font-size:13px; color:var(--muted)}
+    input,textarea{width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--line); background:#fff; color:var(--ink); font-size:16px; outline:none; transition:border .15s ease, box-shadow .15s ease}
+    input:focus,textarea:focus{border-color:#cfe1ff; box-shadow:0 0 0 4px var(--ring)}
+    footer{color:var(--muted); font-size:12px; padding:20px 0; text-align:center}
 
-    footer{color:var(--muted);font-size:12px;padding:20px 0;text-align:center}
-
-    /* ===== Motion system ===== */
-    html { scroll-behavior: smooth; }
+    /* Motion (subtle) */
+    html{scroll-behavior:smooth}
     @media (prefers-reduced-motion:no-preference){
-      /* reveal on scroll */
-      .reveal{opacity:0;transform:translateY(14px) scale(.98);transition:opacity .7s cubic-bezier(.2,.8,.2,1), transform .7s cubic-bezier(.2,.8,.2,1)}
-      .reveal.on{opacity:1;transform:none}
-      /* floating tilt container */
-      .float{transform-style:preserve-3d; will-change:transform, box-shadow, opacity; transition: transform .6s cubic-bezier(.2,.8,.2,1), box-shadow .6s, opacity .6s;}
-      .elevate{box-shadow:
-        0 1px 4px rgba(0,0,0,.18),
-        0 8px 24px rgba(0,0,0,.22),
-        0 24px 48px rgba(0,0,0,.12);}
-      /* gentle hover lift */
+      .reveal{opacity:0; transform:translateY(8px); transition:opacity .6s ease, transform .6s ease}
+      .reveal.on{opacity:1; transform:none}
+      .float{will-change:transform, box-shadow; transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s}
       .lift:hover{transform:translateY(calc(var(--lift) * -1))}
     }
   </style>
 </head>
 <body>
-  <div id="glow" aria-hidden="true"></div>
-
-  <!-- ===== Header ===== -->
+  <!-- Header -->
   <header>
     <div class="wrap nav">
       <div class="brand"><span class="mark" aria-hidden="true"></span> Matan Goldshtein</div>
@@ -127,24 +110,24 @@
   </header>
 
   <main class="wrap">
-    <!-- ===== Hero ===== -->
-    <section class="card reveal float elevate" data-depth="2">
-      <div class="cols" style="align-items:center">
+    <!-- Hero -->
+    <section class="card reveal float">
+      <div class="cols">
         <div>
           <h1 class="title">I build clean, fast web apps</h1>
           <p class="muted">Full-stack developer focused on elegant UI, performance, and business results. Available for selected projects.</p>
-          <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
+          <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap">
             <a href="#contact" class="btn lift">Start a project</a>
             <a href="#services" class="pill lift">What I offer</a>
           </div>
-          <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
-            <span class="pill" style="background:#0c1020;border:1px solid var(--line);color:#cbd5e1">JavaScript • TypeScript</span>
-            <span class="pill" style="background:#0c1020;border:1px solid var(--line);color:#cbd5e1">React • Node</span>
-            <span class="pill" style="background:#0c1020;border:1px solid var(--line);color:#cbd5e1">APIs • Integrations</span>
-            <span class="pill" style="background:#0c1020;border:1px solid var(--line);color:#cbd5e1">AI features</span>
+          <div style="display:flex; gap:8px; margin-top:12px; flex-wrap:wrap">
+            <span class="pill">JavaScript • TypeScript</span>
+            <span class="pill">React • Node</span>
+            <span class="pill">APIs • Integrations</span>
+            <span class="pill">AI features</span>
           </div>
         </div>
-        <div class="card" style="background:#0c1020">
+        <div class="card" style="background:#fff">
           <div class="section-title">Why clients choose me</div>
           <ul class="muted" style="margin:8px 0 0 18px">
             <li>Interfaces that feel effortless and fast</li>
@@ -155,54 +138,72 @@
       </div>
     </section>
 
-    <!-- ===== Services ===== -->
-    <section id="services" class="card reveal float elevate" data-depth="2">
+    <!-- Services -->
+    <section id="services" class="card reveal float">
       <div class="section-title">Services that move the needle</div>
       <p class="muted">I build reliable software that looks great and grows your business.</p>
       <div class="three" style="margin-top:12px">
-        <div class="card float elevate" data-depth="1.5">
-          <div style="font-weight:900;margin-bottom:6px">MVP in Days</div>
+        <div class="card float">
+          <div style="font-weight:900; margin-bottom:6px">MVP in Days</div>
           <div class="muted">From idea to live product: landing page, backend API, and data.</div>
           <ul class="muted" style="margin:10px 0 0 18px"><li>Clean UI</li><li>Auth & forms</li><li>Deploy included</li></ul>
         </div>
-        <div class="card float elevate" data-depth="1.5">
-          <div style="font-weight:900;margin-bottom:6px">Web App Upgrades</div>
+        <div class="card float">
+          <div style="font-weight:900; margin-bottom:6px">Web App Upgrades</div>
           <div class="muted">Speed, UX, and reliability improvements that convert.</div>
           <ul class="muted" style="margin:10px 0 0 18px"><li>Performance tuning</li><li>UI/UX polish</li><li>Bug fixing</li></ul>
         </div>
-        <div class="card float elevate" data-depth="1.5">
-          <div style="font-weight:900;margin-bottom:6px">Integrations & Automation</div>
+        <div class="card float">
+          <div style="font-weight:900; margin-bottom:6px">Integrations & Automation</div>
           <div class="muted">Connect tools and remove manual work with APIs and lightweight AI.</div>
           <ul class="muted" style="margin:10px 0 0 18px"><li>Payments & email</li><li>CRM / DB sync</li><li>AI chat & summaries</li></ul>
         </div>
       </div>
     </section>
 
-    <!-- ===== Selected Work ===== -->
-    <section id="work" class="card reveal float elevate" data-depth="2">
+    <!-- Selected Work -->
+    <section id="work" class="card reveal float">
       <div class="section-title">Selected Work</div>
       <div class="three">
-        <article class="proj float elevate" data-depth="1.2">
+        <article class="proj">
           <div class="thumb">
-            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#7c5cff" offset="0"/><stop stop-color="#10b981" offset="1"/></linearGradient></defs><rect width="120" height="80" rx="8" fill="url(#g)"/><rect x="10" y="12" width="100" height="10" rx="3" fill="#00000022"/><rect x="10" y="28" width="70" height="10" rx="3" fill="#00000022"/><rect x="10" y="44" width="90" height="10" rx="3" fill="#00000022"/></svg>
+            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs><linearGradient id="g1" x1="0" x2="1"><stop stop-color="#3b82f6" offset="0"/><stop stop-color="#10b981" offset="1"/></linearGradient></defs>
+              <rect width="120" height="80" rx="8" fill="url(#g1)"/>
+              <rect x="10" y="12" width="100" height="10" rx="3" fill="#ffffff66"/>
+              <rect x="10" y="28" width="70" height="10" rx="3" fill="#ffffff66"/>
+              <rect x="10" y="44" width="90" height="10" rx="3" fill="#ffffff66"/>
+            </svg>
           </div>
           <div class="p-body">
             <div class="p-title">Real-time Dashboard</div>
             <div class="muted">Live metrics and alerts (React + WebSocket + Node).</div>
           </div>
         </article>
-        <article class="proj float elevate" data-depth="1.2">
+        <article class="proj">
           <div class="thumb">
-            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g2" x1="0" x2="1"><stop stop-color="#7c5cff" offset="0"/><stop stop-color="#10b981" offset="1"/></linearGradient></defs><rect width="120" height="80" rx="8" fill="url(#g2)"/><circle cx="26" cy="40" r="12" fill="#00000022"/><rect x="44" y="28" width="66" height="10" rx="3" fill="#00000022"/><rect x="44" y="44" width="52" height="10" rx="3" fill="#00000022"/></svg>
+            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs><linearGradient id="g2" x1="0" x2="1"><stop stop-color="#3b82f6" offset="0"/><stop stop-color="#10b981" offset="1"/></linearGradient></defs>
+              <rect width="120" height="80" rx="8" fill="url(#g2)"/>
+              <circle cx="26" cy="40" r="12" fill="#ffffff66"/>
+              <rect x="44" y="28" width="66" height="10" rx="3" fill="#ffffff66"/>
+              <rect x="44" y="44" width="52" height="10" rx="3" fill="#ffffff66"/>
+            </svg>
           </div>
           <div class="p-body">
             <div class="p-title">E-commerce Upgrade</div>
             <div class="muted">High-converting storefront + payments (Next.js + Stripe).</div>
           </div>
         </article>
-        <article class="proj float elevate" data-depth="1.2">
+        <article class="proj">
           <div class="thumb">
-            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g3" x1="0" x2="1"><stop stop-color="#7c5cff" offset="0"/><stop stop-color="#10b981" offset="1"/></linearGradient></defs><rect width="120" height="80" rx="8" fill="url(#g3)"/><rect x="10" y="20" width="100" height="12" rx="3" fill="#00000022"/><rect x="10" y="38" width="86" height="12" rx="3" fill="#00000022"/><rect x="10" y="56" width="72" height="12" rx="3" fill="#00000022"/></svg>
+            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs><linearGradient id="g3" x1="0" x2="1"><stop stop-color="#3b82f6" offset="0"/><stop stop-color="#10b981" offset="1"/></linearGradient></defs>
+              <rect width="120" height="80" rx="8" fill="url(#g3)"/>
+              <rect x="10" y="20" width="100" height="12" rx="3" fill="#ffffff66"/>
+              <rect x="10" y="38" width="86" height="12" rx="3" fill="#ffffff66"/>
+              <rect x="10" y="56" width="72" height="12" rx="3" fill="#ffffff66"/>
+            </svg>
           </div>
           <div class="p-body">
             <div class="p-title">AI Support Assistant</div>
@@ -212,10 +213,10 @@
       </div>
     </section>
 
-    <!-- ===== Process ===== -->
-    <section id="process" class="card reveal float elevate" data-depth="2">
+    <!-- Process -->
+    <section id="process" class="card reveal float">
       <div class="section-title">Process (fast & clear)</div>
-      <div class="cols">
+      <div class="cols" style="align-items:flex-start">
         <div>
           <div class="steps">
             <div class="step"><strong>Discovery</strong><div class="muted">Quick call + scope, success metrics, timelines.</div></div>
@@ -224,7 +225,7 @@
             <div class="step"><strong>Launch</strong><div class="muted">Deploy, handover docs, support window.</div></div>
           </div>
         </div>
-        <div class="card" style="background:#0c1020">
+        <div class="card" style="border:1px solid var(--line)">
           <div class="section-title">Highlights</div>
           <ul class="muted" style="margin:8px 0 0 18px">
             <li>Attention to detail and UX polish</li>
@@ -235,32 +236,34 @@
       </div>
     </section>
 
-    <!-- ===== FAQ ===== -->
-    <section id="faq" class="card reveal float elevate" data-depth="2">
+    <!-- FAQ -->
+    <section id="faq" class="card reveal float">
       <div class="section-title">FAQ</div>
-      <details class="card" style="margin-top:8px"><summary><strong>How fast can we start?</strong></summary><div class="muted" style="margin-top:8px">I can usually start within a few days. For MVPs, we can ship a first version in 1–2 weeks depending on scope.</div></details>
-      <details class="card" style="margin-top:8px"><summary><strong>Do you work hourly or fixed-price?</strong></summary><div class="muted" style="margin-top:8px">Either. For well-scoped projects I recommend fixed-price milestones; otherwise we can start hourly and adjust.</div></details>
-      <details class="card" style="margin-top:8px"><summary><strong>What tech do you use?</strong></summary><div class="muted" style="margin-top:8px">React/Next.js on the front end, Node/Express on the back end, Postgres or Mongo, plus modern tooling and CI/CD.</div></details>
+      <details class="card" style="margin-top:8px"><summary><strong>How fast can we start?</strong></summary><div class="muted" style="margin-top:8px">I can usually start within a few days. For MVPs, a first version in 1–2 weeks depending on scope.</div></details>
+      <details class="card" style="margin-top:8px"><summary><strong>Do you work hourly or fixed price?</strong></summary><div class="muted" style="margin-top:8px">Either. For well-scoped projects: fixed-price milestones. Otherwise hourly until scope settles.</div></details>
+      <details class="card" style="margin-top:8px"><summary><strong>What tech do you use?</strong></summary><div class="muted" style="margin-top:8px">React/Next.js, Node/Express, Postgres or Mongo, and modern CI/CD.</div></details>
     </section>
 
-    <!-- ===== Contact (functional) ===== -->
-    <section id="contact" class="card reveal float elevate" data-depth="2">
+    <!-- Contact -->
+    <section id="contact" class="card reveal float">
       <div class="section-title">Let’s work together</div>
       <p class="muted">Tell me about your project. I usually reply within 24 hours.</p>
       <form id="contactForm" style="margin-top:8px">
         <div class="row"><label for="name">Name</label><input id="name" name="name" placeholder="Your name" /></div>
         <div class="row"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@example.com" required /></div>
         <div class="row"><label for="message">Project brief</label><textarea id="message" name="message" rows="5" placeholder="A few sentences about what you need"></textarea></div>
-        <!-- Honeypot -->
+        <!-- Honeypot (ignored by humans) -->
         <input type="text" name="website" id="website" autocomplete="off" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden" tabindex="-1" aria-hidden="true" />
         <button class="btn lift" type="submit">Send message</button>
         <p id="cstatus" class="muted" style="margin-top:8px" aria-live="polite"></p>
       </form>
-      <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
+      <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap">
         <a class="pill lift" id="copyEmail" href="mailto:matangold770@gmail.com">Email: matangold770@gmail.com</a>
         <span class="pill">Availability: Project-based</span>
       </div>
     </section>
+
+    <div class="sp"></div>
   </main>
 
   <footer>
@@ -268,67 +271,42 @@
   </footer>
 
   <script>
-    // Pointer glow (smooth GPU compositing)
-    const glow = document.getElementById('glow');
-    document.addEventListener('pointermove', (e)=>{
-      glow.style.setProperty('--mx', e.clientX + 'px');
-      glow.style.setProperty('--my', e.clientY + 'px');
-      glow.style.setProperty('--glowOpacity', 1);
-      glow.style.setProperty('--glowScale', 1.02);
-      clearTimeout(window._glowTimer);
-      window._glowTimer = setTimeout(()=>{
-        glow.style.setProperty('--glowOpacity', 0);
-        glow.style.setProperty('--glowScale', 1);
-      }, 400);
-    }, {passive:true});
-
-    // Reveal on scroll + parallax background shift
+    // Reveal on scroll (subtle)
     const io = new IntersectionObserver((entries)=>{
-      entries.forEach(en=>{ if(en.isIntersecting) en.target.classList.add('on'); });
-    }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+      entries.forEach(en => { if (en.isIntersecting) en.target.classList.add('on'); });
+    }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-    const onScroll = ()=>{ document.documentElement.style.setProperty('--scroll', String(window.scrollY || 0)); };
-    onScroll();
-    document.addEventListener('scroll', onScroll, {passive:true});
-
-    // Mouse-responsive floating (subtle tilt/translate with RAF)
+    // Optional tiny float based on cursor (very subtle)
     (()=>{
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (reduce) return;
       const floats = [...document.querySelectorAll('.float')];
       if (!floats.length) return;
-
       let mx=0,my=0, tx=0,ty=0, raf;
       const lerp=(a,b,n)=> (1-n)*a + n*b;
 
       function onMove(e){
-        const w=window.innerWidth, h=window.innerHeight;
+        const w=window.innerWidth,h=window.innerHeight;
         mx = (e.clientX / w) * 2 - 1;
         my = (e.clientY / h) * 2 - 1;
         if (!raf) raf = requestAnimationFrame(tick);
       }
-
       function tick(){
         tx = lerp(tx, mx, 0.08);
         ty = lerp(ty, my, 0.08);
         floats.forEach(el=>{
-          const d = Number(el.dataset.depth || 2);     // depth 1..3
-          const x = -tx * d * 6;
-          const y = -ty * d * 6;
-          const rX =  ty * d * 2;
-          const rY = -tx * d * 2;
-          el.style.transform = `translate3d(${x}px, ${y}px, 0) rotateX(${rX}deg) rotateY(${rY}deg)`;
+          const x = -tx * 4;
+          const y = -ty * 4;
+          el.style.transform = `translate3d(${x}px, ${y}px, 0)`;
         });
         raf = requestAnimationFrame(tick);
       }
-
       window.addEventListener('pointermove', onMove, {passive:true});
       window.addEventListener('pointerleave', ()=>{ mx = my = 0; if (!raf) raf = requestAnimationFrame(tick); });
-      window.addEventListener('blur', ()=>{ mx = my = 0; if (!raf) raf = requestAnimationFrame(tick); });
     })();
 
-    // Contact form → posts to your Express API (/api/leads) with honeypot
+    // Contact form (posts to /api/leads). On static hosting this may not exist.
     const form = document.getElementById('contactForm');
     const st = document.getElementById('cstatus');
     if (form) {
@@ -338,22 +316,18 @@
         const data = Object.fromEntries(new FormData(form).entries());
         if (data.website) { st.textContent = 'Got it — I will reply soon.'; form.reset(); return; }
         try {
-          const res = await fetch('/api/leads', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-          });
+          const res = await fetch('/api/leads', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
           const out = await res.json();
           if (!res.ok) throw new Error(out.error || 'Error');
           st.textContent = 'Got it — I will reply soon.';
           form.reset();
         } catch (err) {
-          st.textContent = err.message;
+          st.textContent = 'Thanks! If the form fails, email me: matangold770@gmail.com';
         }
       });
     }
 
-    // Year + copy email helper
+    // Footer year + copy email helper
     document.getElementById('year').textContent = new Date().getFullYear();
     const copyBtn = document.getElementById('copyEmail');
     copyBtn?.addEventListener('click', async (e)=>{
