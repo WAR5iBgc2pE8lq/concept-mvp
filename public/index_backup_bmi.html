@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Concept MVP</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main class="container">
+    <section class="card">
+      <h1>Overtone — Concept MVP</h1>
+      <p class="sub">Prove the idea in hours: capture interest + feedback.</p>
+
+      <form id="leadForm" class="form">
+        <div class="row">
+          <label>Name</label>
+          <input name="name" placeholder="Your name" />
+        </div>
+        <div class="row">
+          <label>Email<span class="req">*</span></label>
+          <input name="email" type="email" placeholder="you@example.com" required />
+        </div>
+        <div class="row">
+          <label>What problem should this solve?</label>
+          <textarea name="message" rows="4" placeholder="Tell us in 1–2 sentences"></textarea>
+        </div>
+        <button type="submit">Join waitlist</button>
+        <p id="status" class="status" role="status"></p>
+      </form>
+    </section>
+
+    <section class="card admin">
+      <h2>Admin (temporary)</h2>
+      <p>Open <code>/admin.html?key=YOUR_ADMIN_KEY</code> to view submissions.</p>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Leads</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main class="container">
+    <section class="card">
+      <h1>Leads</h1>
+      <div id="list"></div>
+    </section>
+  </main>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const key = params.get('key');
+    async function load() {
+      const res = await fetch(`/api/leads?key=${encodeURIComponent(key)}`);
+      const data = await res.json();
+      if (res.ok) render(data); else document.getElementById('list').textContent = data.error || 'Error';
+    }
+    function render(items) {
+      const list = document.getElementById('list');
+      if (!items.length) { list.textContent = 'No leads yet.'; return; }
+      list.innerHTML = items.map(l => `
+        <div class="lead">
+          <div><strong>${l.email}</strong> — ${l.name || 'Anonymous'}</div>
+          <div class="msg">${(l.message || '').replace(/</g,'&lt;')}</div>
+          <div class="meta">${new Date(l.createdAt).toLocaleString()}</div>
+          <button data-id="${l.id}">Delete</button>
+        </div>
+      `).join('');
+      list.querySelectorAll('button').forEach(btn => btn.onclick = async () => {
+        const id = btn.dataset.id;
+        const res = await fetch(`/api/leads/${id}?key=${encodeURIComponent(key)}`, { method: 'DELETE' });
+        if (res.ok) load();
+      });
+    }
+    load();
+  </script>
+</body>
+</html>
