@@ -30,15 +30,18 @@
       </button>
     </div>
 
-    <!-- Mobile drawer -->
-    <div class="mobile-drawer" id="mobileNav" aria-hidden="true">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#work">Work</a>
-      <a href="#results">Results</a>
-      <a href="#faq">FAQ</a>
-      <a class="btn" href="#contact">Hire me</a>
-    </div>
+  <!-- Mobile drawer -->
+<div class="mobile-drawer" id="mobileNav" aria-hidden="true">
+  <div class="mobile-panel">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#results">Results</a>
+    <a href="#faq">FAQ</a>
+    <a class="btn" href="#contact">Hire me</a>
+  </div>
+</div>
+
   </header>
 
   <main id="top">
@@ -385,17 +388,29 @@
       }, {passive:true});
     }
 
-    /* Mobile menu */
-    const toggle = document.getElementById('menuToggle');
-    const drawer = document.getElementById('mobileNav');
-    toggle.addEventListener('click', ()=>{
-      const open = drawer.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
-    });
-    drawer.addEventListener('click', (e)=> {
-      if (e.target.matches('a')) { drawer.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
-    });
+   /* Mobile menu (blur overlay + scroll lock) */
+const toggle = document.getElementById('menuToggle');
+const drawer = document.getElementById('mobileNav');
+
+function setMenu(open){
+  drawer.classList.toggle('open', open);
+  toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+  document.body.classList.toggle('nav-open', open);  // lock/unlock scroll
+}
+
+toggle.addEventListener('click', ()=>{
+  setMenu(!drawer.classList.contains('open'));
+});
+
+/* Close on link tap or backdrop tap */
+drawer.addEventListener('click', (e)=>{
+  const panel = drawer.querySelector('.mobile-panel');
+  if (e.target.matches('.mobile-panel a') || (panel && !panel.contains(e.target))) {
+    setMenu(false);
+  }
+});
+
 
     /* Contact form (backend + fallback) */
     const form = document.getElementById('contactForm');
