@@ -198,27 +198,57 @@ img{max-width:100%; display:block}
   .cta-bar{display:block}
   .section-pad{padding:56px 0}
 }
-/* ==== Mobile nav — frosted overlay with harmony ==== */
+/* ==== Mobile nav — full-screen frosted drawer ==== */
 .mobile-drawer{
-  position: fixed; inset: 66px 0 0 0; display: none; z-index: 39;
-  background: rgba(2, 6, 23, .35);
-  -webkit-backdrop-filter: blur(14px) saturate(130%);
-  backdrop-filter: blur(14px) saturate(130%);
-  padding: 18px;
+  position: fixed;
+  inset: 0;                    /* cover the whole viewport */
+  display: none;
+  z-index: 1000;               /* on top of everything */
+  padding: env(safe-area-inset-top) 18px env(safe-area-inset-bottom) 18px;
+  padding-top: calc(66px + 18px + env(safe-area-inset-top)); /* space for navbar */
+  background: rgba(2, 6, 23, .45);  /* dim layer behind */
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
 }
-.mobile-drawer.open{ display:block; }
+.mobile-drawer.open{ display:block; animation: fadeIn .18s ease-out both; }
+@keyframes fadeIn { from { opacity:0 } to { opacity:1 } }
+
+/* Gentle gradient so it matches your site palette */
 .mobile-drawer::before{
   content:""; position:absolute; inset:0; pointer-events:none;
   background:
-    radial-gradient(800px 520px at 85% 10%, rgba(124,58,237,.18), transparent 60%),
-    radial-gradient(820px 520px at 10% 8%,  rgba(6,182,212,.14), transparent 60%);
+    radial-gradient(900px 560px at 85% 10%, rgba(124,58,237,.18), transparent 60%),
+    radial-gradient(960px 560px at 12% 8%,  rgba(6,182,212,.16), transparent 60%);
 }
-.mobile-panel{ position:relative; max-width:520px; margin:0 auto; display:flex; flex-direction:column; gap:12px; }
+
+/* Fallback when backdrop-filter isn't supported (some Android/Brave versions) */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .mobile-drawer{ background: rgba(15,23,42,.78); }
+}
+
+/* Centered link panel with slide-in */
+.mobile-panel{
+  position:relative;
+  max-width: 520px; margin: 0 auto;
+  display:flex; flex-direction:column; gap:12px;
+  animation: slideDown .22s ease-out both;
+}
+.mobile-drawer.open .mobile-panel{ animation: slideDown .22s ease-out both; }
+@keyframes slideDown { from { transform:translateY(-8px); opacity:.0 } to { transform:none; opacity:1 } }
+
+/* Glassy link cards */
 .mobile-panel a{
-  display:block; padding:16px 18px; border-radius:16px; text-decoration:none; font-weight:800; color:var(--ink);
-  background: rgba(255,255,255,.88); border:1px solid var(--line);
+  display:block;
+  padding:16px 18px;
+  border-radius:16px;
+  text-decoration:none;
+  font-weight:800; color:var(--ink);
+  background: rgba(255,255,255,.9);
+  border: 1px solid var(--line);
   box-shadow: 0 10px 30px rgba(15,23,42,.12), inset 0 0 0 1px rgba(255,255,255,.4);
   transition: transform .15s ease, box-shadow .2s ease;
 }
 .mobile-panel a:hover{ transform: translateY(-2px); }
-body.nav-open{ overflow: hidden; }
+
+/* Prevent background scroll while drawer is open */
+body.nav-open{ overflow:hidden; }
