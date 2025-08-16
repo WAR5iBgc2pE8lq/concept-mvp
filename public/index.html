@@ -4,17 +4,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Matan Goldshtein — Full-Stack Developer</title>
-  <meta name="description" content="I design and build modern, fast, conversion-focused web and mobile apps. MVPs, upgrades, integrations, AI, SEO, and digital marketing." />
+  <meta name="description" content="Full-stack developer delivering fast, beautiful web & mobile apps. MVPs, integrations, AI features, SEO & growth.">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Background art -->
-  <div class="bg-shapes" aria-hidden="true"></div>
-
-  <!-- ===== NAVBAR ===== -->
-  <header class="navbar">
+  <!-- ================= NAV ================= -->
+  <header class="nav">
     <div class="nav-inner container">
-      <a class="logo" href="#top">Matan<span>Dev</span></a>
+      <a class="brand" href="#top" aria-label="Matan home">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-name">Matan<span class="grad">Dev</span></span>
+      </a>
 
       <nav class="nav-links">
         <a href="#about">About</a>
@@ -22,7 +22,7 @@
         <a href="#work">Work</a>
         <a href="#results">Results</a>
         <a href="#faq">FAQ</a>
-        <a class="btn btn-small" href="#contact">Hire me</a>
+        <a class="btn nav-cta" href="#contact">Hire me</a>
       </nav>
 
       <button class="hamburger" id="menuToggle" aria-label="Open menu" aria-expanded="false">
@@ -30,31 +30,38 @@
       </button>
     </div>
 
-  <!-- Mobile drawer -->
-<div class="mobile-drawer" id="mobileNav" aria-hidden="true">
-  <div class="mobile-panel">
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#work">Work</a>
-    <a href="#results">Results</a>
-    <a href="#faq">FAQ</a>
-    <a class="btn" href="#contact">Hire me</a>
-  </div>
-</div>
-
+    <!-- Mobile drawer -->
+    <div class="mobile-drawer" id="mobileNav" aria-hidden="true">
+      <div class="mobile-panel">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#results">Results</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn" href="#contact">Hire me</a>
+      </div>
+    </div>
   </header>
 
   <main id="top">
-    <!-- ===== HERO ===== -->
+    <!-- ================= HERO ================= -->
     <section class="hero section-pad">
       <div class="container hero-grid">
-        <div class="hero-copy reveal" style="--d:0ms">
-          <h1 class="display">I build clean, fast, <span class="grad">business-ready</span> web & mobile apps.</h1>
-          <p class="lead">Full-stack developer blending elegant UI with pragmatic engineering. MVPs in days, upgrades that convert, integrations that save time, plus SEO & growth.</p>
-          <div class="hero-cta">
+        <div class="hero-copy reveal">
+          <h1 class="display">
+            I build clean, fast <span class="grad">web & mobile apps</span>
+          </h1>
+          <p class="lead">
+            Full-stack developer blending elegant UI with pragmatic engineering.
+            MVPs in days, upgrades that convert, integrations that save time —
+            plus AI features, SEO & growth.
+          </p>
+
+          <div class="hero-actions">
             <a class="btn" href="#contact">Start a project</a>
-            <a class="btn-ghost" href="#work">See selected work</a>
+            <a class="btn ghost" href="#work">See selected work</a>
           </div>
+
           <div class="badges">
             <span>React & Node</span>
             <span>iOS & Android</span>
@@ -63,399 +70,271 @@
           </div>
         </div>
 
-        <div class="hero-card reveal tilt" style="--d:140ms">
-          <div class="card shine gborder">
-            <div class="card-head">
-              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-            </div>
-            <div class="card-body">
-              <div class="mini-metric">
-                <div class="metric-number">+42%</div>
-                <div class="metric-label">Conversion lift</div>
-              </div>
-              <div class="mini-metric">
-                <div class="metric-number">7 days</div>
-                <div class="metric-label">Average MVP</div>
-              </div>
-              <div class="mini-metric">
-                <div class="metric-number">98%</div>
-                <div class="metric-label">Client satisfaction</div>
-              </div>
-              <p class="tiny">*Typical outcomes from past projects. We’ll set clear targets together.</p>
+        <div class="hero-visual reveal" aria-hidden="true">
+          <div class="glass">
+            <div class="pulse"></div>
+            <div class="bars"></div>
+            <div class="stats">
+              <div><strong>+42%</strong><span>conversion</span></div>
+              <div><strong>~220ms</strong><span>TTI</span></div>
+              <div><strong>99.9%</strong><span>uptime</span></div>
             </div>
           </div>
         </div>
       </div>
-      <div class="scroll-indicator" aria-hidden="true"><span></span></div>
     </section>
 
-    <!-- ===== ABOUT ===== -->
-    <section id="about" class="section section-pad">
-      <div class="container two-col">
-        <div class="reveal" style="--d:0ms">
-          <h2 class="section-title">About</h2>
-          <p class="muted big">
-            I’m Matan Goldshtein, a full-stack developer focused on clarity, speed, and polish.
-            I turn ideas into reliable products with crisp UI and production-ready code.
+    <!-- ================= ABOUT ================= -->
+    <section id="about" class="section-pad">
+      <div class="container grid two reveal">
+        <div>
+          <h2>About</h2>
+          <p>
+            I’m <strong>Matan Goldshtein</strong>, a full-stack developer who ships
+            production-ready products with obsessive attention to detail: thoughtful UX,
+            performance first, and maintainable code.
           </p>
-          <ul class="tick-list">
-            <li>Pixel-perfect, responsive interfaces</li>
-            <li>Production-grade Node/Express APIs</li>
-            <li>iOS & Android apps (React Native)</li>
-            <li>SEO, conversion, and growth mindset</li>
+          <ul class="check">
+            <li>Pixel-perfect, accessible UIs</li>
+            <li>TypeScript, React, Node & Postgres</li>
+            <li>Native-feel mobile (React Native)</li>
+            <li>Reliable APIs, auth, payments</li>
           </ul>
         </div>
-        <div class="reveal tilt" style="--d:120ms">
-          <div class="about-card card gborder">
-            <h3>How I work</h3>
-            <ol class="steps">
-              <li><strong>Discovery:</strong> scope, goals, timeline</li>
-              <li><strong>Design:</strong> wireframe → UI system</li>
-              <li><strong>Build:</strong> iterative, weekly demos</li>
-              <li><strong>Launch:</strong> deploy, docs, support</li>
-            </ol>
-            <div class="inline-cta">
-              <a class="btn btn-small" href="#contact">Let’s talk</a>
-              <a class="btn-ghost btn-small" href="#services">My services</a>
-            </div>
-          </div>
+        <div class="card muted">
+          <h3>Highlights</h3>
+          <ul class="bullets">
+            <li>Launched 20+ client projects</li>
+            <li>Cut support tickets by 30% via AI chat</li>
+            <li>Lifted checkout conversions by 25%</li>
+            <li>Transparent pricing & quick iterations</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- ===== SERVICES ===== -->
-    <section id="services" class="section section-pad">
+    <!-- ================= SERVICES ================= -->
+    <section id="services" class="section-pad">
       <div class="container">
-        <h2 class="section-title reveal" style="--d:0ms">Services</h2>
-        <p class="muted center reveal" style="--d:80ms">Reliable software that looks great and moves metrics.</p>
-
-        <div class="cards-3">
-          <article class="card service reveal lift glow gborder" style="--d:0ms">
+        <h2 class="reveal">Services</h2>
+        <div class="grid three">
+          <div class="card reveal">
             <h3>MVP in Days</h3>
-            <p class="muted">Idea → live product: landing page, clean UI, backend API, data, deploy.</p>
-            <ul class="mini">
-              <li>Auth & forms</li><li>CMS or custom</li><li>Deploy & docs</li>
+            <p>From idea to live product: landing page, backend API, and data.</p>
+            <ul class="bullets">
+              <li>Clean UI & forms</li>
+              <li>Auth, payments, email</li>
+              <li>Deploy included</li>
             </ul>
-          </article>
-
-          <article class="card service reveal lift glow gborder" style="--d:100ms">
-            <h3>Upgrades & Polish</h3>
-            <p class="muted">Speed, UX, and reliability improvements that lift conversions.</p>
-            <ul class="mini">
-              <li>Performance tuning</li><li>UI/UX revamp</li><li>Bug fixing</li>
+          </div>
+          <div class="card reveal">
+            <h3>Web & App Upgrades</h3>
+            <p>Speed, UX, and reliability improvements that convert.</p>
+            <ul class="bullets">
+              <li>Performance tuning</li>
+              <li>UI/UX polish</li>
+              <li>Bug fixing</li>
             </ul>
-          </article>
-
-          <article class="card service reveal lift glow gborder" style="--d:200ms">
+          </div>
+          <div class="card reveal">
             <h3>Integrations & AI</h3>
-            <p class="muted">Connect tools, automate work, add pragmatic AI features.</p>
-            <ul class="mini">
-              <li>Payments & email</li><li>CRM/DB sync</li><li>AI chat & summaries</li>
+            <p>Connect tools and remove manual work with APIs and lightweight AI.</p>
+            <ul class="bullets">
+              <li>CRM / DB sync</li>
+              <li>AI chat & summaries</li>
+              <li>Payments & invoicing</li>
             </ul>
-          </article>
+          </div>
         </div>
 
-        <div class="cards-3" style="margin-top:22px">
-          <article class="card service reveal lift glow gborder" style="--d:0ms">
-            <h3>Mobile Apps (iOS & Android)</h3>
-            <p class="muted">Cross-platform apps with native feel (React Native + APIs).</p>
-            <ul class="mini">
-              <li>App store ready</li><li>Push & auth</li><li>Analytics</li>
-            </ul>
-          </article>
-
-          <article class="card service reveal lift glow gborder" style="--d:100ms">
-            <h3>SEO & Technical Performance</h3>
-            <p class="muted">Better rankings and speed that users (and Google) love.</p>
-            <ul class="mini">
-              <li>Core Web Vitals</li><li>Structured data</li><li>Content guidance</li>
-            </ul>
-          </article>
-
-          <article class="card service reveal lift glow gborder" style="--d:200ms">
-            <h3>Digital Marketing & Funnels</h3>
-            <p class="muted">Landing pages, funnels, tracking, and conversion optimization.</p>
-            <ul class="mini">
-              <li>Pixel & events</li><li>A/B tests</li><li>CRO</li>
-            </ul>
-          </article>
+        <div class="grid three subcards">
+          <div class="chip reveal">iOS & Android apps</div>
+          <div class="chip reveal">SEO & Content Strategy</div>
+          <div class="chip reveal">Analytics & A/B testing</div>
         </div>
       </div>
     </section>
 
-    <!-- ===== WORK ===== -->
-    <section id="work" class="section section-pad">
+    <!-- ================= WORK ================= -->
+    <section id="work" class="section-pad">
       <div class="container">
-        <h2 class="section-title reveal" style="--d:0ms">Selected Work</h2>
-
-        <div class="cards-3">
-          <article class="proj-card reveal lift gborder" style="--d:0ms">
+        <h2 class="reveal">Selected Work</h2>
+        <div class="grid three">
+          <article class="proj card reveal">
             <div class="thumb">
-              <img src="https://images.pexels.com/photos/6476587/pexels-photo-6476587.jpeg?auto=compress&cs=tinysrgb&h=800&w=1200" alt="Real-time dashboard on a computer screen" loading="lazy">
+              <img src="https://images.pexels.com/photos/6476587/pexels-photo-6476587.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800"
+                   alt="Real-time dashboard with charts on a laptop" loading="lazy" width="1200" height="800">
             </div>
-            <div class="proj-body">
-              <h3>Real-time Dashboard</h3>
-              <p class="muted">Live metrics & alerts (React + WebSocket + Node).</p>
+            <div class="p-body">
+              <div class="p-title">Real-time Dashboard</div>
+              <div class="muted">Live metrics & alerts (React + WebSocket + Node).</div>
             </div>
           </article>
 
-          <article class="proj-card reveal lift gborder" style="--d:120ms">
+          <article class="proj card reveal">
             <div class="thumb">
-              <img src="https://images.pexels.com/photos/7620619/pexels-photo-7620619.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1200&h=800" alt="E-commerce storefront on a laptop screen" loading="lazy">
+              <img src="https://images.pexels.com/photos/7620619/pexels-photo-7620619.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800"
+                   alt="Modern e-commerce storefront UI on laptop" loading="lazy" width="1200" height="800">
             </div>
-            <div class="proj-body">
-              <h3>E-commerce Upgrade</h3>
-              <p class="muted">High-converting storefront + payments (Next.js + Stripe).</p>
+            <div class="p-body">
+              <div class="p-title">E-commerce Upgrade</div>
+              <div class="muted">High-converting storefront + payments (Next.js + Stripe).</div>
             </div>
           </article>
 
-          <article class="proj-card reveal lift gborder" style="--d:240ms">
+          <article class="proj card reveal">
             <div class="thumb">
-              <img src="https://images.pexels.com/photos/30530407/pexels-photo-30530407.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1200&h=800" alt="AI chat interface on a computer screen" loading="lazy">
+              <img src="https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800"
+                   alt="AI assistant chat interface on laptop" loading="lazy" width="1200" height="800">
             </div>
-            <div class="proj-body">
-              <h3>AI Support Assistant</h3>
-              <p class="muted">Custom chat for FAQs & triage (Node + LLM API).</p>
+            <div class="p-body">
+              <div class="p-title">AI Support Assistant</div>
+              <div class="muted">Custom chat for FAQs & triage (Node + LLM API).</div>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ===== RESULTS STRIP ===== -->
-    <section id="results" class="section strip">
-      <div class="container strip-inner">
-        <div class="strip-item reveal" style="--d:0ms">
-          <div class="kpi">+40%</div>
-          <div class="kpi-label">Avg. conversion lift</div>
+    <!-- ================= RESULTS / TESTIMONIALS ================= -->
+    <section id="results" class="section-pad">
+      <div class="container grid two">
+        <div class="card quote reveal">
+          “The support chatbot cut tickets by 30%. Seamless API and CRM integration.”
+          <div class="muted">— R. Patel, Operations</div>
         </div>
-        <div class="strip-item reveal" style="--d:100ms">
-          <div class="kpi">1 week</div>
-          <div class="kpi-label">Typical MVP timeline</div>
-        </div>
-        <div class="strip-item reveal" style="--d:200ms">
-          <div class="kpi">100%</div>
-          <div class="kpi-label">On-time demos</div>
+        <div class="card quote reveal">
+          “Checkout conversion up 25% in two sprints. Night and day.”
+          <div class="muted">— L. Ortiz, E-commerce Lead</div>
         </div>
       </div>
     </section>
 
-    <!-- ===== TESTIMONIALS ===== -->
-    <section class="section section-pad">
+    <!-- ================= FAQ ================= -->
+    <section id="faq" class="section-pad">
       <div class="container">
-        <h2 class="section-title reveal">What clients say</h2>
-        <div class="cards-3">
-          <blockquote class="quote card reveal lift glow gborder" style="--d:0ms">
-            “Matan shipped a clean MVP in days. Communication and iterations were on point.”
-            <cite>— A. Cohen, Founder</cite>
-          </blockquote>
-          <blockquote class="quote card reveal lift glow gborder" style="--d:120ms">
-            “Our storefront converts 2× better now. UX and performance are night and day.”
-            <cite>— L. Ortiz, E-commerce Lead</cite>
-          </blockquote>
-          <blockquote class="quote card reveal lift glow gborder" style="--d:240ms">
-            “The support chatbot cut tickets by 30%. API + CRM integration was seamless.”
-            <cite>— R. Patel, Ops</cite>
-          </blockquote>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== FAQ (CSS-only animation) ===== -->
-    <section id="faq" class="section section-pad">
-      <div class="container">
-        <h2 class="section-title reveal">FAQ</h2>
-
-        <details class="faq-item card gborder reveal" style="--d:0ms">
-          <summary><span>What projects are the best fit?</span></summary>
-          <div class="answer muted">
-            MVPs, revamps, mobile apps, and integrations where clear UX and reliable engineering matter.
-          </div>
+        <h2 class="reveal">FAQ</h2>
+        <details class="faq-item reveal">
+          <summary><strong>What projects are the best fit?</strong></summary>
+          <p>Startups and teams who value clean UI + real business results: MVPs, upgrades, and integrations.</p>
         </details>
-
-        <details class="faq-item card gborder reveal" style="--d:80ms">
-          <summary><span>How soon can we start?</span></summary>
-          <div class="answer muted">
-            Usually within a few days. We’ll align on scope and milestones in the kickoff.
-          </div>
+        <details class="faq-item reveal">
+          <summary><strong>How soon can we start?</strong></summary>
+          <p>Usually within 1–2 weeks after a short call, scope, and agreement.</p>
         </details>
-
-        <details class="faq-item card gborder reveal" style="--d:160ms">
-          <summary><span>Pricing & billing?</span></summary>
-          <div class="answer muted">
-            Fixed-price per milestone for well-scoped work; otherwise time & materials until scope stabilizes. Weekly updates either way.
-          </div>
+        <details class="faq-item reveal">
+          <summary><strong>Pricing & billing?</strong></summary>
+          <p>Fixed price per milestone or weekly engagements with transparent deliverables.</p>
         </details>
-
-        <details class="faq-item card gborder reveal" style="--d:240ms">
-          <summary><span>Post-launch support?</span></summary>
-          <div class="answer muted">
-            Yes — bug fixes, enhancements, and optional retainers to keep momentum.
-          </div>
+        <details class="faq-item reveal">
+          <summary><strong>Post-launch support?</strong></summary>
+          <p>Yes — bug fixes, maintenance, and feature updates with clear SLAs.</p>
         </details>
-
-        <details class="faq-item card gborder reveal" style="--d:320ms">
-          <summary><span>Can you add AI features?</span></summary>
-          <div class="answer muted">
-            Absolutely. I integrate chat, smart search, summarization, and automations pragmatically — value first.
-          </div>
+        <details class="faq-item reveal">
+          <summary><strong>Can you add AI features?</strong></summary>
+          <p>Absolutely. I integrate AI where it adds measurable value (search, summaries, chat, tagging, etc.).</p>
         </details>
       </div>
     </section>
 
-    <!-- ===== CONTACT ===== -->
-    <section id="contact" class="section section-pad">
-      <div class="container two-col">
-        <div class="reveal" style="--d:0ms">
-          <h2 class="section-title">Let’s work together</h2>
-          <p class="muted big">Tell me about your project. I’ll reply within 24 hours.</p>
-          <div class="contact-meta">
-            <a class="chip" href="mailto:matangold770@gmail.com">✉︎ matangold770@gmail.com</a>
-            <span class="chip">Availability: project-based</span>
+    <!-- ================= CONTACT ================= -->
+    <section id="contact" class="section-pad">
+      <div class="container grid two">
+        <div class="reveal">
+          <h2>Let’s work together</h2>
+          <p>Tell me about your project. I usually reply within 24 hours.</p>
+          <div class="meta">
+            <span class="pill">Availability: project-based</span>
+            <a class="pill" id="copyEmail" href="mailto:matangold770@gmail.com">Email: matangold770@gmail.com</a>
           </div>
         </div>
 
-        <form id="contactForm" class="contact-form reveal" style="--d:120ms">
-          <label>Name<input name="name" placeholder="Your name" /></label>
-          <label>Email<input name="email" type="email" placeholder="you@example.com" required /></label>
-          <label>Project brief<textarea name="message" rows="5" placeholder="A few sentences about what you need"></textarea></label>
-          <!-- Honeypot -->
-          <input type="text" name="website" autocomplete="off" class="hp" tabindex="-1" aria-hidden="true" />
-          <button class="btn" type="submit">Send message</button>
-          <p id="cstatus" class="muted tiny" aria-live="polite"></p>
-        </form>
+        <div class="card form reveal">
+          <form id="contactForm" novalidate>
+            <div class="row">
+              <label for="name">Name</label>
+              <input id="name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="row">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required />
+            </div>
+            <div class="row">
+              <label for="message">Project brief</label>
+              <textarea id="message" name="message" rows="5" placeholder="A few sentences about what you need" required></textarea>
+            </div>
+
+            <!-- Honeypot -->
+            <input type="text" name="website" id="website" autocomplete="off" tabindex="-1"
+                   style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden" aria-hidden="true">
+
+            <button class="btn lift" type="submit">Send message</button>
+            <p id="cstatus" class="status" aria-live="polite"></p>
+          </form>
+        </div>
       </div>
     </section>
-
-    <!-- Mobile sticky CTA -->
-    <div class="cta-bar">
-      <a class="btn btn-wide" href="#contact">Hire Matan</a>
-    </div>
   </main>
 
   <footer class="footer">
-    <div class="container foot">
-      <small>© <span id="year"></span> Matan Goldshtein — crafted with care</small>
-      <nav class="foot-links">
-        <a href="#services">Services</a>
-        <a href="#work">Work</a>
-        <a href="#contact">Contact</a>
-      </nav>
+    <div class="container">
+      <span>&copy; 2025 Matan Goldshtein</span>
+      <span class="dot">·</span>
+      <a href="#top">Back to top</a>
     </div>
   </footer>
 
-  <!-- ===== INTERACTIONS (no FAQ click interception) ===== -->
   <script>
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Smooth scroll + offset for sticky nav
+    document.documentElement.style.scrollBehavior = 'smooth';
+    // Reveal on scroll
+    const io = new IntersectionObserver((ents)=>{
+      ents.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-    /* Reveal on scroll */
-    if (!prefersReduced && 'IntersectionObserver' in window) {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(en => {
-          if (en.isIntersecting) {
-            en.target.classList.add('show');
-            io.unobserve(en.target);
-          }
-        });
-      }, { threshold: 0.12 });
-      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    } else {
-      document.querySelectorAll('.reveal').forEach(el => el.classList.add('show'));
+    // Mobile menu (reliable, full-screen, blur + scroll lock)
+    const toggle = document.getElementById('menuToggle');
+    const drawer = document.getElementById('mobileNav');
+    function setMenu(open){
+      drawer.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+      document.body.classList.toggle('nav-open', open);
     }
+    toggle.addEventListener('click', ()=> setMenu(!drawer.classList.contains('open')));
+    drawer.addEventListener('click', (e)=>{
+      const panel = drawer.querySelector('.mobile-panel');
+      if (e.target.matches('.mobile-panel a') || (panel && !panel.contains(e.target))) setMenu(false);
+    });
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') setMenu(false); });
 
-    /* Subtle pointer tilt */
-    if (!prefersReduced) {
-      const tilts = document.querySelectorAll('.tilt');
-      let mx=0,my=0;
-      window.addEventListener('pointermove', (e)=>{
-        const w = window.innerWidth, h = window.innerHeight;
-        mx = (e.clientX / w - 0.5) * 2;
-        my = (e.clientY / h - 0.5) * 2;
-        tilts.forEach(el=>{
-          el.style.transform = `rotateX(${(-my*2)}deg) rotateY(${(mx*2)}deg)`;
-        });
-      }, {passive:true});
-      window.addEventListener('pointerleave', ()=> tilts.forEach(el=> el.style.transform = 'none'));
-    }
-
-    /* Background parallax (very subtle) */
-    if (!prefersReduced) {
-      const bg = document.querySelector('.bg-shapes');
-      window.addEventListener('pointermove', (e)=>{
-        const x = (e.clientX / window.innerWidth - .5) * 6;
-        const y = (e.clientY / window.innerHeight - .5) * 6;
-        bg.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-      }, {passive:true});
-    }
-
-/* Mobile menu (full-screen frosted overlay + scroll lock) */
-const toggle = document.getElementById('menuToggle');
-const drawer = document.getElementById('mobileNav');
-
-function setMenu(open){
-  drawer.classList.toggle('open', open);
-  toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-  drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
-  document.body.classList.toggle('nav-open', open);     // lock/unlock scroll
-}
-
-toggle.addEventListener('click', () => {
-  setMenu(!drawer.classList.contains('open'));
-});
-
-// Close on link tap OR backdrop tap (outside the panel) OR Esc key
-drawer.addEventListener('click', (e)=>{
-  const panel = drawer.querySelector('.mobile-panel');
-  if (e.target.matches('.mobile-panel a') || (panel && !panel.contains(e.target))) {
-    setMenu(false);
-  }
-});
-window.addEventListener('keydown', (e)=> { if (e.key === 'Escape') setMenu(false); });
-
-
-/* Close on link tap or backdrop tap */
-drawer.addEventListener('click', (e)=>{
-  const panel = drawer.querySelector('.mobile-panel');
-  if (e.target.matches('.mobile-panel a') || (panel && !panel.contains(e.target))) {
-    setMenu(false);
-  }
-});
-
-
-    /* Contact form (backend + fallback) */
+    // Contact form -> POST /api/leads (works with your existing server.js)
     const form = document.getElementById('contactForm');
-    const statusEl = document.getElementById('cstatus');
+    const statusEL = document.getElementById('cstatus');
     if (form) {
-      form.addEventListener('submit', async (e)=>{
+      form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        statusEl.textContent = 'Sending…';
+        statusEL.textContent = 'Sending…';
         const data = Object.fromEntries(new FormData(form).entries());
-        if (data.website) { statusEl.textContent = 'Got it — I will reply soon.'; form.reset(); return; }
+        if (data.website) { statusEL.textContent = 'Got it — I will reply soon.'; form.reset(); return; }
         try {
-          const res = await fetch('/api/leads', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) });
+          const res = await fetch('/api/leads', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
           const out = await res.json().catch(()=> ({}));
           if (!res.ok) throw new Error(out.error || 'Error');
-          statusEl.textContent = 'Got it — I will reply soon.';
+          statusEL.textContent = 'Got it — I will reply soon.';
           form.reset();
-        } catch {
-          statusEl.textContent = 'Thanks! If the form fails, email me: matangold770@gmail.com';
+        } catch (err) {
+          statusEL.textContent = 'Thanks! If the form fails, email me: matangold770@gmail.com';
         }
       });
     }
-
-    /* Footer year */
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    /* Prevent auto-jump to hash on direct load */
-    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-    window.addEventListener('load', () => {
-      const nav = performance.getEntriesByType('navigation')[0];
-      const direct = nav ? nav.type === 'navigate' : true;
-      if (direct && location.hash) {
-        history.replaceState(null, '', location.pathname + location.search);
-        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-      }
-    });
   </script>
 </body>
 </html>
