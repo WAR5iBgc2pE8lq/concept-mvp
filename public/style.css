@@ -1,22 +1,17 @@
-/* ------------------------------------------------
-   FONT & RESET
---------------------------------------------------*/
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
 
 :root{
-  --ink:#0f172a;           /* primary text */
-  --muted:#58627a;         /* secondary text */
+  --ink:#0f172a; --muted:#58627a;
   --line:rgba(15,23,42,.12);
   --surface:rgba(255,255,255,.78);
   --surface-strong:rgba(255,255,255,.94);
 
-  /* Vibrant, attention-grabbing but classy */
-  --a1:#7c3aed;            /* violet */
-  --a2:#2563eb;            /* royal blue */
-  --a3:#06b6d4;            /* cyan */
+  /* Vibrant gradient set (more depth) */
+  --a1:#7c3aed;     /* violet */
+  --a2:#2563eb;     /* royal blue */
+  --a3:#06b6d4;     /* cyan */
 
-  --radius:16px;
-  --shadow:0 22px 60px rgba(15,23,42,.12);
+  --radius:16px; --shadow:0 22px 60px rgba(15,23,42,.12);
 }
 
 *{box-sizing:border-box}
@@ -24,13 +19,13 @@ html,body{height:100%}
 body{
   margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color:var(--ink);
-  /* Dot grid + colorful gradient glows for more visual interest */
+  /* Mesh + dots for non-flat look */
   background:
     radial-gradient(circle at 0 0, #e8ebf8 1px, transparent 1.6px) 0 0/26px 26px,
     radial-gradient(circle at 13px 13px, #e8ebf8 1px, transparent 1.6px) 0 0/26px 26px,
-    linear-gradient(180deg, #fbfdff, #f6f9ff 40%, #ffffff 85%),
-    radial-gradient(1200px 800px at 10% -10%, rgba(124,58,237,.10), transparent 55%),
-    radial-gradient(1200px 900px at 100% 0%, rgba(6,182,212,.08), transparent 55%);
+    radial-gradient(1000px 700px at -10% -10%, rgba(124,58,237,.10), transparent 60%),
+    radial-gradient(1100px 800px at 110% -10%, rgba(6,182,212,.08), transparent 60%),
+    linear-gradient(180deg, #fbfdff, #f6f9ff 40%, #ffffff 85%);
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
   overflow-x:hidden;
 }
@@ -42,18 +37,17 @@ img{max-width:100%; display:block}
 .big{font-size:18px}
 .tiny{font-size:12px}
 
-/* Background shapes for depth */
+/* Background shapes (parallax) */
 .bg-shapes{
-  position:fixed; inset:-20vh -10vw auto -10vw; height:70vh; pointer-events:none; z-index:-1;
+  position:fixed; inset:-15vh -10vw auto -10vw; height:70vh; pointer-events:none; z-index:-1;
   background:
-    radial-gradient(900px 600px at 15% 8%, rgba(124,58,237,.12), transparent 70%),
-    radial-gradient(1000px 700px at 90% 5%, rgba(37,99,235,.12), transparent 70%);
+    radial-gradient(900px 600px at 18% 10%, rgba(124,58,237,.14), transparent 70%),
+    radial-gradient(1000px 700px at 88% 6%, rgba(37,99,235,.12), transparent 70%);
   filter:saturate(110%);
+  transition: transform .25s ease-out;
 }
 
-/* ------------------------------------------------
-   NAVBAR
---------------------------------------------------*/
+/* NAVBAR */
 .navbar{position:sticky; top:0; z-index:40; backdrop-filter:saturate(140%) blur(10px);
   background:linear-gradient(180deg, var(--surface-strong), rgba(255,255,255,.66)); border-bottom:1px solid var(--line)}
 .nav-inner{display:flex; align-items:center; justify-content:space-between; height:66px}
@@ -75,9 +69,7 @@ img{max-width:100%; display:block}
 .mobile-drawer.open{display:block}
 .mobile-drawer a{display:block; padding:12px 14px; margin:8px 0; border-radius:10px; background:rgba(255,255,255,.96); border:1px solid var(--line); font-weight:700}
 
-/* ------------------------------------------------
-   HERO
---------------------------------------------------*/
+/* HERO */
 .section-pad{padding:72px 0}
 .hero{position:relative}
 .hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:22px; align-items:center}
@@ -97,21 +89,24 @@ img{max-width:100%; display:block}
 .scroll-indicator{position:absolute; left:50%; bottom:10px; transform:translateX(-50%); width:22px; height:36px; border:2px solid #cbd5e1; border-radius:14px; display:grid; place-items:center; opacity:.9}
 .scroll-indicator span{display:block; width:4px; height:8px; border-radius:2px; background:#cbd5e1; animation:scroll 1.6s infinite ease}
 @keyframes scroll{0%{transform:translateY(-6px); opacity:0} 30%{opacity:1} 100%{transform:translateY(6px); opacity:0}}
-
-/* Subtle glossy line on feature cards */
 .shine::after{
   content:""; position:absolute; inset:0; pointer-events:none;
   background:linear-gradient(120deg, rgba(255,255,255,.0) 0%, rgba(255,255,255,.35) 40%, rgba(255,255,255,.0) 70%);
-  transform:translateX(-100%); animation:shine 5s linear infinite;
+  transform:translateX(-120%); animation:shine 5s linear infinite;
 }
-@keyframes shine{0%{transform:translateX(-120%)} 100%{transform:translateX(120%)}}
+@keyframes shine{to{transform:translateX(120%)}}
 
-/* ------------------------------------------------
-   ABOUT / SERVICES / WORK
---------------------------------------------------*/
+/* LAYOUT SECTIONS */
 .section{position:relative}
 .two-col{display:grid; grid-template-columns:1.05fr .95fr; gap:22px; align-items:start}
 .card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow); backdrop-filter: blur(12px) saturate(120%)}
+.gborder{position:relative}
+.gborder::before{
+  content:""; position:absolute; inset:0; pointer-events:none; border-radius:inherit; padding:1px;
+  background:linear-gradient(135deg, rgba(124,58,237,.4), rgba(37,99,235,.4), rgba(6,182,212,.35));
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude;
+}
 .about-card h3{margin:0 0 8px}
 .tick-list{margin:14px 0 0 0; padding-left:18px}
 .tick-list li{margin:6px 0}
@@ -131,35 +126,38 @@ img{max-width:100%; display:block}
 .proj-body{padding:16px}
 .proj-body h3{margin:0 0 4px}
 
-/* ------------------------------------------------
-   RESULTS STRIP
---------------------------------------------------*/
+/* RESULTS STRIP */
 .strip{background:linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.75)); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
 .strip-inner{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; align-items:center; padding:26px 0}
 .strip-item{text-align:center}
 .kpi{font-weight:900; font-size:28px}
 .kpi-label{color:var(--muted)}
 
-/* ------------------------------------------------
-   QUOTES / FAQ
---------------------------------------------------*/
+/* QUOTES / FAQ */
 .quote{font-size:18px; font-weight:600}
 .quote cite{display:block; margin-top:8px; color:var(--muted); font-weight:600}
 
-/* FAQ look + animation container */
+/* FAQ look + CSS animation (no JS interception) */
 .faq-item summary{list-style:none; cursor:pointer; font-weight:800; display:flex; align-items:center; gap:10px}
 .faq-item summary::-webkit-details-marker{display:none}
 .faq-item summary span{flex:1}
 .faq-item summary::after{content:"+"; font-weight:900; color:#475569}
 .faq-item[open] summary::after{content:"–"}
-.answer{overflow:hidden; height:0; margin-top:8px}
-@media (prefers-reduced-motion: reduce){
-  .answer{height:auto}
+.answer{
+  overflow:hidden;
+  max-height:0;              /* collapsed */
+  opacity:0;
+  padding:0 2px;
+  margin-top:8px;
+  transition:max-height .35s ease, opacity .35s ease;
+  will-change:max-height, opacity;
+}
+.faq-item[open] .answer{
+  max-height:500px;          /* large enough for typical answers */
+  opacity:1;
 }
 
-/* ------------------------------------------------
-   CONTACT
---------------------------------------------------*/
+/* CONTACT */
 .contact-meta{display:flex; gap:10px; flex-wrap:wrap; margin-top:8px}
 .chip{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; border:1px solid var(--line); background:#fff; text-decoration:none; color:var(--ink)}
 .contact-form{display:grid; gap:12px}
@@ -172,17 +170,13 @@ img{max-width:100%; display:block}
 .cta-bar{position:fixed; left:0; right:0; bottom:12px; display:none; padding:0 12px; z-index:38}
 .cta-bar .btn{border-radius:999px}
 
-/* ------------------------------------------------
-   FOOTER
---------------------------------------------------*/
+/* FOOTER */
 .footer{border-top:1px solid var(--line); background:rgba(255,255,255,.9)}
 .foot{display:flex; align-items:center; justify-content:space-between; height:66px}
 .foot-links a{color:var(--muted); text-decoration:none; margin-left:14px}
 .foot-links a:hover{color:var(--ink)}
 
-/* ------------------------------------------------
-   ANIMATIONS (reveal / hover / glow)
---------------------------------------------------*/
+/* ANIMATIONS */
 .reveal{opacity:0; transform:translateY(10px); transition:opacity .7s ease, transform .7s ease; transition-delay:var(--d,0ms)}
 .reveal.show{opacity:1; transform:none}
 .lift{transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s; will-change:transform}
@@ -191,9 +185,7 @@ img{max-width:100%; display:block}
 .glow{box-shadow:0 8px 30px rgba(124,58,237,.08), inset 0 0 0 1px rgba(124,58,237,.08)}
 .glow:hover{box-shadow:0 16px 44px rgba(124,58,237,.16), inset 0 0 0 1px rgba(124,58,237,.12)}
 
-/* ------------------------------------------------
-   RESPONSIVE
---------------------------------------------------*/
+/* RESPONSIVE */
 @media (max-width: 980px){
   .hero-grid{grid-template-columns:1fr}
   .two-col{grid-template-columns:1fr}
