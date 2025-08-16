@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Matan Goldshtein — Portfolio</title>
-  <meta name="description" content="Full-stack developer crafting clean, fast, business-driven web apps. MVPs, upgrades, integrations, and AI features." />
+  <title>Matan Goldshtein — Full-Stack Developer for Hire</title>
+  <meta name="description" content="I build clean, fast, business-driven web apps. MVPs, upgrades, integrations, and pragmatic AI features that ship value quickly." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
 
     :root{
-      /* Type & color */
-      --ink:#0f172a;
-      --muted:#5b6478;
-      --line:rgba(2,6,23,.08);
-      --surface:rgba(255,255,255,.76);
-      --surface-strong:rgba(255,255,255,.9);
+      /* Core colors */
+      --ink:#0f172a;      /* primary text */
+      --muted:#5b6478;    /* secondary text */
+      --line:rgba(15,23,42,.10);
+      --surface:rgba(255,255,255,.78);
+      --surface-strong:rgba(255,255,255,.94);
 
-      /* Harmonious palette (lavender → indigo) */
-      --a1:#8b5cf6;
-      --a2:#6366f1;
+      /* Accent palette (professional blue) */
+      --a1:#2563eb;  /* royal blue */
+      --a2:#0ea5e9;  /* cyan */
 
-      /* UI tokens */
-      --ring:rgba(99,102,241,.22);
+      /* Tokens */
+      --ring:rgba(37,99,235,.22);
       --shadow:0 22px 60px rgba(15,23,42,.10);
-      --radius:18px;
+      --radius:16px;
       --gap:24px;
-      --dot:#e9edfb;
+      --dot:#e9eef9;
 
       /* Type scale */
-      --fs-xxl: clamp(34px, 5.2vw, 56px);
+      --fs-xxl: clamp(36px, 5.2vw, 56px);
       --fs-xl: 24px;
       --fs-lg: 18px;
       --fs-md: 16px;
@@ -41,13 +42,13 @@
       margin:0;
       font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--ink);
-      /* Subtle dotted grid + soft gradient background */
+      /* Subtle dotted grid + soft gradient */
       background:
         radial-gradient(circle at 0 0, var(--dot) 1px, transparent 1.6px) 0 0/28px 28px,
         radial-gradient(circle at 14px 14px, var(--dot) 1px, transparent 1.6px) 0 0/28px 28px,
-        linear-gradient(180deg, #fbfbff, #f7f9ff 40%, #ffffff 80%),
-        radial-gradient(1200px 800px at 8% -10%, rgba(139,92,246,.08), transparent 55%),
-        radial-gradient(1200px 900px at 100% 0%, rgba(99,102,241,.06), transparent 55%);
+        linear-gradient(180deg, #fbfdff, #f7fbff 45%, #ffffff 85%),
+        radial-gradient(1200px 800px at 8% -10%, rgba(37,99,235,.09), transparent 55%),
+        radial-gradient(1200px 900px at 100% 0%, rgba(14,165,233,.07), transparent 55%);
       -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
       overflow-x:hidden;
     }
@@ -56,10 +57,10 @@
     img{max-width:100%; display:block}
     .wrap{max-width:1120px; margin:0 auto; padding:28px 20px}
 
-    /* ===== Header + Menu ===== */
+    /* ===== Header ===== */
     header{
-      position:sticky; top:0; z-index:30;
-      background:linear-gradient(180deg, var(--surface-strong), rgba(255,255,255,.65));
+      position:sticky; top:0; z-index:40;
+      background:linear-gradient(180deg, var(--surface-strong), rgba(255,255,255,.66));
       border-bottom:1px solid var(--line);
       backdrop-filter:saturate(140%) blur(10px);
     }
@@ -68,40 +69,35 @@
     .links{display:flex; gap:10px; flex-wrap:wrap}
     .pill{
       display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px;
-      border:1px solid var(--line); background:rgba(255,255,255,.92);
+      border:1px solid var(--line); background:rgba(255,255,255,.94);
       box-shadow:0 8px 22px rgba(15,23,42,.05); font-weight:600;
     }
     .btn{
-      display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:12px;
-      font-weight:800; border:0; cursor:pointer; color:#fff;
-      background:linear-gradient(90deg, var(--a1), var(--a2));
-      box-shadow:var(--shadow);
+      display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:12px; font-weight:800; border:0; cursor:pointer; color:#fff;
+      background:linear-gradient(90deg, var(--a1), var(--a2)); box-shadow:var(--shadow)
     }
 
-    /* Hamburger (mobile) */
-    .menu-btn{
-      display:none; width:42px; height:42px; border-radius:12px; border:1px solid var(--line);
-      background:rgba(255,255,255,.96); cursor:pointer; align-items:center; justify-content:center;
-      box-shadow:0 6px 20px rgba(15,23,42,.05);
-    }
+    /* Hamburger */
+    .menu-btn{display:none; width:42px; height:42px; border-radius:12px; border:1px solid var(--line);
+      background:rgba(255,255,255,.96); cursor:pointer; align-items:center; justify-content:center; box-shadow:0 6px 20px rgba(15,23,42,.05);}
     .menu-btn i{width:20px; height:2px; background:#1f2937; position:relative; display:block}
     .menu-btn i::before,.menu-btn i::after{content:""; position:absolute; left:0; right:0; height:2px; background:#1f2937}
     .menu-btn i::before{top:-6px} .menu-btn i::after{bottom:-6px}
 
-    .menu{position:fixed; inset:0; background:rgba(2,6,23,.28); backdrop-filter: blur(8px) saturate(120%); display:none; align-items:flex-start; justify-content:flex-end; padding:20px; z-index:40}
+    .menu{position:fixed; inset:0; background:rgba(2,6,23,.28); backdrop-filter: blur(8px) saturate(120%); display:none; align-items:flex-start; justify-content:flex-end; padding:20px; z-index:50}
     .menu.open{display:flex}
-    .menu-panel{width:min(320px, 90vw); border:1px solid var(--line); border-radius:16px; background:rgba(255,255,255,.96); box-shadow:var(--shadow); padding:16px}
+    .menu-panel{width:min(320px, 90vw); border:1px solid var(--line); border-radius:16px; background:rgba(255,255,255,.97); box-shadow:var(--shadow); padding:16px}
     .menu-panel a{display:block; padding:12px; border-radius:10px; font-weight:600}
-    .menu-panel a:hover{background:#f2f4ff}
+    .menu-panel a:hover{background:#eef4ff}
 
     /* ===== Sections / Cards ===== */
-    section{scroll-margin-top:80px} /* anchor offset for sticky header */
+    section{scroll-margin-top:80px}
     .section{
       background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
       padding:28px; box-shadow:var(--shadow); margin-bottom:var(--gap);
       backdrop-filter: blur(12px) saturate(120%);
     }
-    .title{font-size:var(--fs-xxl); font-weight:900; letter-spacing:-.03em; margin:0 0 10px}
+    .title{font-size:var(--fs-xxl); font-weight:900; letter-spacing:-.03em; margin:0 0 12px}
     .lead{font-size:var(--fs-lg); color:var(--muted)}
     .section-title{
       font-size:var(--fs-xl); font-weight:900; letter-spacing:-.01em; margin:0 0 12px;
@@ -110,7 +106,7 @@
     .muted{color:var(--muted)}
     .sp{height:1px; background:linear-gradient(90deg, transparent, rgba(2,6,23,.08), transparent); margin:24px 0}
 
-    .cols{display:grid; grid-template-columns:1.1fr .9fr; gap:var(--gap); align-items:center}
+    .cols{display:grid; grid-template-columns:1.08fr .92fr; gap:var(--gap); align-items:center}
     .three{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap)}
 
     /* Responsive */
@@ -130,11 +126,15 @@
     .bullets{margin:12px 0 0 18px; color:var(--muted)}
     .bullets li{margin:6px 0}
 
-    .proj{border:1px solid var(--line); border-radius:16px; background:rgba(255,255,255,.94); overflow:hidden; display:flex; flex-direction:column; backdrop-filter:blur(6px)}
-    .thumb{aspect-ratio:16/10; width:100%; overflow:hidden; background:#f3f5f9}
+    .proj{border:1px solid var(--line); border-radius:16px; background:rgba(255,255,255,.95); overflow:hidden; display:flex; flex-direction:column; backdrop-filter:blur(6px)}
+    .thumb{aspect-ratio:16/10; width:100%; overflow:hidden; background:#f3f6fa}
     .thumb img{width:100%; height:100%; object-fit:cover; display:block; transform:scale(1.02)}
     .p-body{padding:16px}
     .p-title{font-weight:900}
+
+    /* Metrics / badges */
+    .badges{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+    .badge{font-size:12px; padding:8px 12px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,.92)}
 
     /* Steps */
     .steps{counter-reset:s}
@@ -145,8 +145,8 @@
     /* Form */
     .row{display:grid; gap:8px; margin-bottom:12px}
     label{font-size:var(--fs-sm); color:var(--muted)}
-    input,textarea{width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--line); background:rgba(255,255,255,.96); color:var(--ink); font-size:var(--fs-md); outline:none; transition:border .15s ease, box-shadow .15s ease}
-    input:focus,textarea:focus{border-color:#dcdcff; box-shadow:0 0 0 4px var(--ring)}
+    input,textarea{width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--line); background:rgba(255,255,255,.97); color:var(--ink); font-size:var(--fs-md); outline:none; transition:border .15s ease, box-shadow .15s ease}
+    input:focus,textarea:focus{border-color:#cfe1ff; box-shadow:0 0 0 4px var(--ring)}
     footer{color:var(--muted); font-size:12px; padding:20px 0; text-align:center}
 
     /* Motion */
@@ -164,10 +164,11 @@
   <header>
     <div class="wrap nav">
       <div class="brand">Matan Goldshtein</div>
-      <nav class="links">
+      <nav class="links" aria-label="Primary">
         <a class="pill" href="#services">Services</a>
         <a class="pill" href="#work">Work</a>
         <a class="pill" href="#process">Process</a>
+        <a class="pill" href="#testimonials">Testimonials</a>
         <a class="pill" href="#faq">FAQ</a>
         <a class="btn lift" href="#contact">Hire me</a>
       </nav>
@@ -177,36 +178,36 @@
 
   <main class="wrap" style="margin-top:var(--gap)">
     <!-- ===== Hero ===== -->
-    <section class="section reveal float" id="top">
+    <section class="section reveal float" id="top" aria-labelledby="hero-title">
       <div class="cols">
         <div>
-          <h1 class="title">I build clean, fast web apps</h1>
+          <h1 id="hero-title" class="title">I build clean, fast web apps</h1>
           <p class="lead">Full-stack developer focused on elegant UI, high performance, and measurable business results.</p>
           <div style="display:flex; gap:12px; margin-top:14px; flex-wrap:wrap">
             <a href="#contact" class="btn lift">Start a project</a>
-            <a href="#services" class="pill lift">What I offer</a>
+            <a href="#work" class="pill lift">See Selected Work</a>
           </div>
-          <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap">
-            <span class="pill">JavaScript • TypeScript</span>
-            <span class="pill">React • Node</span>
-            <span class="pill">APIs • Integrations</span>
-            <span class="pill">AI features</span>
+          <div class="badges">
+            <span class="badge">MVPs in days</span>
+            <span class="badge">Conversion-focused UX</span>
+            <span class="badge">API & AI integrations</span>
+            <span class="badge">Clear communication</span>
           </div>
         </div>
         <div class="section stack" style="margin:0">
           <div class="section-title">Why clients choose me</div>
           <ul class="bullets">
             <li>Interfaces that feel effortless and fast</li>
-            <li>Clear communication and reliable delivery</li>
             <li>Pragmatic engineering — ship value first</li>
+            <li>Reliable delivery and transparent updates</li>
           </ul>
         </div>
       </div>
     </section>
 
     <!-- ===== Services ===== -->
-    <section id="services" class="section reveal float">
-      <div class="section-title">Services that move the needle</div>
+    <section id="services" class="section reveal float" aria-labelledby="svc-title">
+      <h2 id="svc-title" class="section-title">Services that move the needle</h2>
       <p class="muted">Reliable software that looks great and grows your business.</p>
       <div class="three" style="margin-top:14px">
         <div class="section float" style="margin:0">
@@ -228,8 +229,8 @@
     </section>
 
     <!-- ===== Selected Work ===== -->
-    <section id="work" class="section reveal float">
-      <div class="section-title">Selected Work</div>
+    <section id="work" class="section reveal float" aria-labelledby="work-title">
+      <h2 id="work-title" class="section-title">Selected Work</h2>
       <div class="three">
         <!-- Real-time Dashboard -->
         <article class="proj float">
@@ -267,31 +268,50 @@
     </section>
 
     <!-- ===== Process ===== -->
-    <section id="process" class="section reveal float">
-      <div class="section-title">Process (fast & clear)</div>
+    <section id="process" class="section reveal float" aria-labelledby="process-title">
+      <h2 id="process-title" class="section-title">Process (fast & clear)</h2>
       <div class="cols" style="align-items:flex-start">
         <div>
           <div class="steps">
             <div class="step"><strong>Discovery</strong><div class="muted">Quick call + scope, success metrics, timelines.</div></div>
-            <div class="step"><strong>Design</strong><div class="muted">Wireframe → clean UI with consistent components.</div></div>
-            <div class="step"><strong>Build</strong><div class="muted">Iterative shipping; clear weekly updates.</div></div>
+            <div class="step"><strong>Design</strong><div class="muted">Wireframe → clean, consistent UI.</div></div>
+            <div class="step"><strong>Build</strong><div class="muted">Iterative shipping with visible progress.</div></div>
             <div class="step"><strong>Launch</strong><div class="muted">Deploy, handover docs, support window.</div></div>
           </div>
         </div>
         <div class="section stack" style="margin:0">
-          <div class="section-title">Highlights</div>
+          <div class="section-title">Guarantees</div>
           <ul class="bullets">
-            <li>Attention to detail and UX polish</li>
+            <li>Clear scope + weekly updates</li>
             <li>Production-ready code & best practices</li>
-            <li>Transparent pricing & communication</li>
+            <li>Post-launch support options</li>
           </ul>
         </div>
       </div>
     </section>
 
+    <!-- ===== Testimonials ===== -->
+    <section id="testimonials" class="section reveal float" aria-labelledby="test-title">
+      <h2 id="test-title" class="section-title">Client testimonials</h2>
+      <div class="three">
+        <div class="section" style="margin:0">
+          <div class="quote">“Matan delivered a clean MVP in days. Great communication and fast iterations.”</div>
+          <div class="muted" style="margin-top:6px">— A. Cohen, Founder</div>
+        </div>
+        <div class="section" style="margin:0">
+          <div class="quote">“Our storefront now converts 2× better. Performance and UX are night and day.”</div>
+          <div class="muted" style="margin-top:6px">— L. Ortiz, E-commerce Lead</div>
+        </div>
+        <div class="section" style="margin:0">
+          <div class="quote">“The support chatbot cut tickets by 30%. Seamless API and CRM integration.”</div>
+          <div class="muted" style="margin-top:6px">— R. Patel, Operations</div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== FAQ ===== -->
-    <section id="faq" class="section reveal float">
-      <div class="section-title">FAQ</div>
+    <section id="faq" class="section reveal float" aria-labelledby="faq-title">
+      <h2 id="faq-title" class="section-title">FAQ</h2>
       <details class="section" style="margin:8px 0 0 0"><summary><strong>What projects are the best fit?</strong></summary><div class="muted" style="margin-top:8px">MVPs, product revamps, and integrations that need clear UX and reliable engineering. If users must love it and it must ship on time, I’m in.</div></details>
       <details class="section" style="margin-top:8px"><summary><strong>How soon can we start?</strong></summary><div class="muted" style="margin-top:8px">Usually within a few days. First milestone plan delivered after our kickoff call.</div></details>
       <details class="section" style="margin-top:8px"><summary><strong>Pricing & billing?</strong></summary><div class="muted" style="margin-top:8px">Fixed-price per milestone for well-scoped work; otherwise time & materials until scope is stable. Either way you get weekly updates and demos.</div></details>
@@ -300,8 +320,8 @@
     </section>
 
     <!-- ===== Contact ===== -->
-    <section id="contact" class="section reveal float">
-      <div class="section-title">Let’s work together</div>
+    <section id="contact" class="section reveal float" aria-labelledby="contact-title">
+      <h2 id="contact-title" class="section-title">Let’s work together</h2>
       <p class="muted">Tell me about your project. I usually reply within 24 hours.</p>
       <form id="contactForm" style="margin-top:8px">
         <div class="row"><label for="name">Name</label><input id="name" name="name" placeholder="Your name" /></div>
@@ -325,25 +345,37 @@
     <div class="wrap muted">© <span id="year"></span> Matan Goldshtein • Designed for clarity</div>
   </footer>
 
-  <!-- Menu overlay -->
+  <!-- Mobile menu overlay -->
   <div class="menu" id="menu" aria-hidden="true">
     <div class="menu-panel" role="menu">
       <a href="#services" role="menuitem">Services</a>
       <a href="#work" role="menuitem">Work</a>
       <a href="#process" role="menuitem">Process</a>
+      <a href="#testimonials" role="menuitem">Testimonials</a>
       <a href="#faq" role="menuitem">FAQ</a>
       <a href="#contact" role="menuitem">Hire me</a>
     </div>
   </div>
 
   <script>
+    // Avoid mobile auto-jump to a cached #hash
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.addEventListener('load', () => {
+      const nav = performance.getEntriesByType('navigation')[0];
+      const direct = nav ? nav.type === 'navigate' : true;
+      if (direct && location.hash) {
+        history.replaceState(null, '', location.pathname + location.search);
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      }
+    });
+
     // Reveal on scroll
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(en => { if (en.isIntersecting) en.target.classList.add('on'); });
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-    // Subtle mouse float (reduced-motion aware)
+    // Subtle mouse float (respects reduced-motion)
     (()=>{
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (reduce) return;
@@ -381,4 +413,49 @@
 
     // Contact form (fallback if no backend)
     const form = document.getElementById('contactForm');
-    const st = document.getElementById('c
+    const st = document.getElementById('cstatus');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        st.textContent = 'Sending…';
+        const data = Object.fromEntries(new FormData(form).entries());
+        if (data.website) { st.textContent = 'Got it — I will reply soon.'; form.reset(); return; } // honeypot
+        try {
+          const res = await fetch('/api/leads', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+          const out = await res.json();
+          if (!res.ok) throw new Error(out.error || 'Error');
+          st.textContent = 'Got it — I will reply soon.';
+          form.reset();
+        } catch (err) {
+          st.textContent = 'Thanks! If the form fails, email me: matangold770@gmail.com';
+        }
+      });
+    }
+
+    // Footer year + copy email helper
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const copyBtn = document.getElementById('copyEmail');
+    copyBtn?.addEventListener('click', async (e)=>{
+      if (navigator.clipboard) {
+        e.preventDefault();
+        await navigator.clipboard.writeText('matangold770@gmail.com');
+        copyBtn.textContent = 'Email copied — matangold770@gmail.com';
+        setTimeout(()=> copyBtn.textContent = 'Email: matangold770@gmail.com', 1600);
+        location.href = 'mailto:matangold770@gmail.com';
+      }
+    });
+  </script>
+
+  <!-- Simple structured data for better previews -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Matan Goldshtein",
+    "jobTitle":"Full-Stack Developer",
+    "email":"mailto:matangold770@gmail.com",
+    "url":"https://concept-mvp.onrender.com/"
+  }
+  </script>
+</body>
+</html>
