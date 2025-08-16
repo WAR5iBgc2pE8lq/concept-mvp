@@ -15,3 +15,21 @@ button { display: inline-block; padding: 10px 16px; border: 0; border-radius: 12
 .lead { border: 1px solid #eee; border-radius: 12px; padding: 12px; margin: 10px 0; }
 .lead .meta { color: #666; font-size: 12px; margin-top: 6px; }
 .lead .msg { margin-top: 6px; white-space: pre-wrap; }
+
+/* === FAQ spacing & styling === */
+#faq > details.section {
+  margin: 12px 0; /* ensures equal spacing between each FAQ item */
+}
+
+#faq > details.section > summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 14px;
+  border-radius: 10px;
+  background: #f9f9fb; /* subtle background */
+  transition: background 0.2s ease;
+}
+
+#faq > details.section > summary:hover {
+  background: #f0f0f5;
+}
